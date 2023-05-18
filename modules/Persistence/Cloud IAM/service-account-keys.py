@@ -4,7 +4,7 @@ Author:         Anirban Das
                 linkedin.com/in/anrbnds
 
 Command:        pers service-account-keys
-Description:    Creates and downloads Service Account Key for Persistence.
+Description:    Downloads Service Account Key for Persistence.
 Explained:      Creates and downloads the key of every Service Account or a specific Service Account that exists in a project for Persistence. If the Service Account given doesn't exist, it will be created along with the key which is then downloaded.  
 """
 
