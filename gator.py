@@ -130,6 +130,7 @@ class MyCLI(cmd.Cmd):
 
             Commands : Other
                 other createroles
+                other createsa
             
             Commands : Listings 
                 list params / list params all
@@ -251,6 +252,11 @@ class MyCLI(cmd.Cmd):
             self.run_other_createroles()
         elif len(command_parts) == 3 and command_parts[0] == "other" and command_parts[1] == "createroles" and command_parts[2] == "params":
             self.run_other_createroles(list_params=True)    
+
+        elif len(command_parts) == 2 and command_parts[0] == "other" and command_parts[1] == "createsa":
+            self.run_other_createsa()
+        elif len(command_parts) == 3 and command_parts[0] == "other" and command_parts[1] == "createsa" and command_parts[2] == "params":
+            self.run_other_createsa(list_params=True) 
 
     # Commands : Listings
 
@@ -619,14 +625,10 @@ class MyCLI(cmd.Cmd):
             if list_params:
                 params = {
                     'project_id': self.project_id,
-                    'account': self.account,
-                    'roleid': self.roleid,
-                    'sadisplayname': self.sadisplayname
+                    'sadownload': self.sadownload,
                 }
                 table_data = [["project_id", "Mandatory", params["project_id"] or "Not Set"],
-                            ["account", "Optional", params["account"] or "Not Set"],
-                            ["roleid", "Optional", params["roleid"] or "Not Set"],
-                            ["sadisplayname", "Optional", params["sadisplayname"] or "Not Set"]]
+                            ["sadownload", "Optional", params["sadownload"] or "Not Set"]]
 
                 headers = ["Parameter", "Type", "Value"]
                 print(tabulate(table_data, headers=headers, tablefmt="grid"))
@@ -640,7 +642,7 @@ class MyCLI(cmd.Cmd):
                 return
             job_id = len(self.jobs) + 1
             print(f"{GREEN}+ Task is running in the background as a Job with ID: {job_id}.{RESET}")
-            future = self.executor.submit(self.modules[module_path].run_module, self.project_id, self.serviceaccountpath, self.active_access_token, self.account, self.roleid, self.sadisplayname)
+            future = self.executor.submit(self.modules[module_path].run_module, self.project_id, self.serviceaccountpath, self.active_access_token, self.sadownload)
             self.jobs[job_id] = future
 
         except Exception as e:
@@ -648,13 +650,14 @@ class MyCLI(cmd.Cmd):
 
 
     """ Commands : Other - Implementation:
-        other createroles 
+        other createroles
+        other createsa
     """
 
     def run_other_createroles(self, list_params=False):
 
         permissions_path = "/etc/GATOR/dependent/permissions.txt" if os.path.exists("/.dockerenv") else "./dependent/permissions.txt"
-        module_path = "modules.Other.createroles"
+        module_path = "modules.Other.Cloud IAM.createroles"
         if module_path not in self.modules:
             print(f"{RED}- The module '{module_path}' does not exist.{RESET}")
             return
@@ -686,6 +689,45 @@ class MyCLI(cmd.Cmd):
             job_id = len(self.jobs) + 1
             print(f"{GREEN}+ Task is running in the background as a Job with ID: {job_id}.{RESET}")
             future = self.executor.submit(self.modules[module_path].run_module, self.project_id, self.serviceaccountpath, self.active_access_token, self.rolename, self.roleid, self.roledesc)
+            self.jobs[job_id] = future
+
+        except Exception as e:
+            print(f"{RED}- Error executing '{module_path}': {e}{RESET}")
+
+
+    def run_other_createsa(self, list_params=False):
+
+        module_path = "modules.Other.Cloud IAM.createsa"
+        if module_path not in self.modules:
+            print(f"{RED}- The module '{module_path}' does not exist.{RESET}")
+            return
+        try:
+            if list_params:
+                params = {
+                    'project_id': self.project_id,
+                    'account': self.account,
+                    'roleid': self.roleid,
+                    'sadisplayname': self.sadisplayname
+                }
+                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set"],
+                            ["account", "Mandatory", params["account"] or "Not Set"],
+                            ["roleid", "Optional", params["roleid"] or "Not Set"],
+                            ["sadisplayname", "Optional", params["sadisplayname"] or "Not Set"]]
+
+                headers = ["Parameter", "Type", "Value"]
+                print(tabulate(table_data, headers=headers, tablefmt="grid"))
+                return
+
+            if self.project_id is None:
+                print(f"{RED}- Project ID not set. Use 'set projectid' command to set the project ID.{RESET}")
+                return
+            if self.serviceaccountpath is None and self.active_access_token is None:
+                print(f"{RED}- No Authentication Mechanism set. Use 'activate serviceaccount' or 'activate accesstoken' command to set an authentication mechanism.{RESET}")
+                return            
+            job_id = len(self.jobs) + 1
+            print(f"{GREEN}+ Task is running in the background as a Job with ID: {job_id}.{RESET}")
+            future = self.executor.submit(self.modules[module_path].run_module, self.project_id, self.serviceaccountpath, self.active_access_token, self.account, 
+            self.roleid, self.sadisplayname)
             self.jobs[job_id] = future
 
         except Exception as e:

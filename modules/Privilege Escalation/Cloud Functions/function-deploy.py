@@ -148,7 +148,12 @@ def run_module(project_id, serviceaccountpath, active_access_token, bucket_name=
                 if sadownload == 'default' or sadownload is None:
                     accounts_to_download = all_accounts
                 else:
-                    accounts_to_download = [account for account in all_accounts if account == sadownload]
+                    if sadownload in all_accounts:
+                        accounts_to_download = [sadownload]
+                    else:
+                        output += f"{RED}  The Service Account: {sadownload} doesn't exist.{RESET}"
+                        return output
+                    
 
                 for account_email in accounts_to_download:
                     key = service.projects().serviceAccounts().keys().create(
