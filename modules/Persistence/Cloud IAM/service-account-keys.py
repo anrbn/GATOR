@@ -144,4 +144,5 @@ def create_saccount(project_id, serviceaccountpath, active_access_token, account
 
     except Exception as e:
         output += f"{RED}  An error occurred: {str(e)}{RESET}"
-        return output
+        return None, output
+
