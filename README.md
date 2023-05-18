@@ -61,7 +61,7 @@
 ## Reporting an Issue
 If you encounter any problems with this tool, I encourage you to let me know. Here are the steps to report an issue:
 
-1. **Check Existing Issues**: Before reporting a new issue, please check the existing issues in our GitHub repository. Your issue might have already been reported and possibly even resolved.
+1. **Check Existing Issues**: Before reporting a new issue, please check the existing issues in this repository. Your issue might have already been reported and possibly even resolved.
 
 2. **Create a New Issue**: If your problem hasn't been reported, please create a new issue in the GitHub repository. Click the Issues tab and then click New Issue.
 
@@ -82,13 +82,11 @@ After an issue is resolved, it will be closed. You can still view closed issues 
 # Contributing
 I warmly welcome and appreciate contributions from the community! If you're interested in contributing, feel free to submit a pull request (PR) with any new modules or features you'd like to add.
 
-After making your changes in your own forked copy of our repository, you can submit a PR. 
-
 Once you've submitted a PR, I'll review it as soon as I can. I might request some changes or improvements before merging your PR. Your contributions play a crucial role in making the tool better, and I'm excited to see what you'll bring to the project!
 
-Thank you for considering contributing to our project! Looking forward to seeing your proposed changes.
+Thank you for considering contributing to the project!
 
 
 # Questions and Issues
-If you have any questions regarding the tool or any of its modules, please check out the [documentation](https://anrbn.gitbook.io/gator/) first. I've worked hard to provide clear, comprehensive information related to the tools and all of its modules. If however your query is not yet solved or you have a different question altogether please don't hesitate to reach out to me via [Twitter](https://twitter.com/corvuscr0w) or [LinkedIn](https://www.linkedin.com/in/anrbnds/). I'm always happy to help and provide support. :)
+If you have any questions regarding the tool or any of its modules, please check out the [documentation](https://anrbn.gitbook.io/gator/) first. I've tried to provide clear, comprehensive information related to the tools and all of its modules. If however your query is not yet solved or you have a different question altogether please don't hesitate to reach out to me via [Twitter](https://twitter.com/corvuscr0w) or [LinkedIn](https://www.linkedin.com/in/anrbnds/). I'm always happy to help and provide support. :)
 
