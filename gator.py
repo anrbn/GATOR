@@ -28,7 +28,6 @@ print(f"""{BOLD}{MAGENTA}
 {RESET}                                                 
                                     
                 ~ from the swamps, to the cloud
-
 """)
 
 class MyCLI(cmd.Cmd):
