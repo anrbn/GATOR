@@ -4,7 +4,7 @@ Author:         Anirban Das
                 linkedin.com/in/anrbnds
 
 Command:        recon storage-tree
-Description:    Lists Cloud Storage buckets and objects present in the project in a tree view format.
+Description:    Lists Cloud Storage buckets and objects present in the project in a tree structure.
 """
 
 import colorama, platform
