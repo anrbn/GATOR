@@ -40,7 +40,7 @@ def run_module(project_id, serviceaccountpath, active_access_token, account, rol
         elif active_access_token is not None:
             creds = google.oauth2.credentials.Credentials(active_access_token)
         else:
-            output = f"{RED}- No valid authentication method provided.{RESET}\n"
+            output += f"{RED}- No valid authentication method provided.{RESET}\n"
             return output
 
         iam_service = build('iam', 'v1', credentials=creds)
@@ -57,7 +57,7 @@ def run_module(project_id, serviceaccountpath, active_access_token, account, rol
             name=f'projects/{project_id}',
             body=create_service_account
         ).execute()
-        output = f"{GREEN}+ Service account {response['email']} created successfully.{RESET}\n"
+        output += f"{GREEN}+ Service account {response['email']} created successfully.{RESET}\n"
 
         if roleid is None or roleid == "default":
             role_ids = ["roles/editor"]
@@ -72,10 +72,10 @@ def run_module(project_id, serviceaccountpath, active_access_token, account, rol
             }
             policy['bindings'].append(binding)
         resource_manager_service.projects().setIamPolicy(resource=project_id, body={'policy': policy}).execute()
-        output = f"{GREEN}+ Roles {', '.join(role_ids)} granted to service account {response['email']}.{RESET}\n"
+        output += f"{GREEN}+ Roles {', '.join(role_ids)} granted to service account {response['email']}.{RESET}\n"
         return output
 
     except Exception as e:
-        output = f"{RED}-  An error occurred: {str(e)}{RESET}"
+        output += f"{RED}-  An error occurred: {str(e)}{RESET}"
         return output
 

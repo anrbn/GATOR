@@ -676,7 +676,7 @@ class MyCLI(cmd.Cmd):
                 wrap_width = 30
                 table_data = [
                     ["projectid", "Mandatory", params["project_id"] or "Not Set", "Sets the Project ID"],
-                    ["permissions_path", "Mandatory", textwrap.fill(params["permissions.txt"] or "N/A", wrap_width), "Sets the Permission(s) to assign to the Role"],
+                    [permissions_path, "Mandatory", textwrap.fill(params["permissions.txt"] or "N/A", wrap_width), "Sets the Permission(s) to assign to the Role"],
                     ["rolename", "Optional", textwrap.fill(params["rolename"] or "Not Set", wrap_width), "Sets the Role Name"],
                     ["roleid", "Optional", textwrap.fill(params["roleid"] or "Not Set", wrap_width), "Sets the Role ID"],
                     ["roledesc", "Optional", textwrap.fill(params["roledesc"] or "Not Set", wrap_width), "Sets the Role Description"]
@@ -720,7 +720,7 @@ class MyCLI(cmd.Cmd):
                 table_data = [
                     ["projectid", "Mandatory", params["project_id"] or "Not Set", "Sets the Project ID"],
                     ["account", "Mandatory", textwrap.fill(params["account"] or "Not Set", wrap_width), "Sets the Service Account Name"],
-                    ["roleid", "Optional", textwrap.fill(params["roleid"] or "Not Set", wrap_width), "Sets the Role ID"],
+                    ["roleid", "Optional", textwrap.fill(params["roleid"] or "Not Set", wrap_width), textwrap.fill("Assigns the Permissions associated with the Role ID(s) to the Service Account.", wrap_width)],
                     ["sadisplayname", "Optional", textwrap.fill(params["sadisplayname"] or "Not Set", wrap_width), "Sets the Service Account display name"]
                 ]
 
