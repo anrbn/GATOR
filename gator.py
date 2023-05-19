@@ -442,7 +442,7 @@ class MyCLI(cmd.Cmd):
                 params = {
                     'project_id': self.project_id,
                 }
-                table_data = [["project_id", "Mandatory", params["project_id"] or "Not Set"]]
+                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set"]]
 
                 headers = ["Parameter", "Type", "Value"]
                 print(tabulate(table_data, headers=headers, tablefmt="grid"))
@@ -469,7 +469,7 @@ class MyCLI(cmd.Cmd):
                 params = {
                     'project_id': self.project_id,
                 }
-                table_data = [["project_id", "Mandatory", params["project_id"] or "Not Set"]]
+                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set"]]
 
                 headers = ["Parameter", "Type", "Value"]
                 print(tabulate(table_data, headers=headers, tablefmt="grid"))
@@ -496,7 +496,7 @@ class MyCLI(cmd.Cmd):
                 params = {
                     'project_id': self.project_id,
                 }
-                table_data = [["project_id", "Mandatory", params["project_id"] or "Not Set"]]
+                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set"]]
 
                 headers = ["Parameter", "Type", "Value"]
                 print(tabulate(table_data, headers=headers, tablefmt="grid"))
@@ -523,7 +523,7 @@ class MyCLI(cmd.Cmd):
                 params = {
                     'project_id': self.project_id,
                 }
-                table_data = [["project_id", "Mandatory", params["project_id"] or "Not Set"]]
+                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set"]]
 
                 headers = ["Parameter", "Type", "Value"]
                 print(tabulate(table_data, headers=headers, tablefmt="grid"))
@@ -550,7 +550,7 @@ class MyCLI(cmd.Cmd):
                 params = {
                     'project_id': self.project_id,
                 }
-                table_data = [["project_id", "Mandatory", params["project_id"] or "Not Set"]]
+                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set"]]
 
                 headers = ["Parameter", "Type", "Value"]
                 print(tabulate(table_data, headers=headers, tablefmt="grid"))
@@ -584,7 +584,7 @@ class MyCLI(cmd.Cmd):
                     'account': self.account,
                     'sadownload': self.sadownload
                 }
-                table_data = [["project_id", "Mandatory", params["project_id"] or "Not Set"],
+                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set"],
                             ["bucket", "Mandatory", params["bucket_name"] or "Not Set"],
                             ["account", "Optional", params["account"] or "Not Set"],
                             ["sadownload", "Optional", params["sadownload"] or "Not Set"]]
@@ -626,7 +626,7 @@ class MyCLI(cmd.Cmd):
                     'project_id': self.project_id,
                     'sadownload': self.sadownload,
                 }
-                table_data = [["project_id", "Mandatory", params["project_id"] or "Not Set"],
+                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set"],
                             ["sadownload", "Optional", params["sadownload"] or "Not Set"]]
 
                 headers = ["Parameter", "Type", "Value"]
@@ -669,7 +669,7 @@ class MyCLI(cmd.Cmd):
                     'roleid': self.roleid,
                     'roledesc': self.roledesc
                 }
-                table_data = [["project_id", "Mandatory", params["project_id"] or "Not Set"],
+                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set"],
                             [permissions_path, "Mandatory", params["permissions.txt"] or "N/A"],
                             ["rolename", "Optional", params["rolename"] or "Not Set"],
                             ["roleid", "Optional", params["roleid"] or "Not Set"],
@@ -746,7 +746,7 @@ class MyCLI(cmd.Cmd):
             return
         
         params = {
-            'project_id': self.project_id,
+            'projectid': self.project_id,
             'bucket': self.bucket_name,
             'account': self.account,
             'sadownload': self.sadownload,
