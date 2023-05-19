@@ -70,6 +70,34 @@
 </table>
 </div>
 
+# Documentation
+
+Have a look at the GATOR [Gitbook](https://anrbn.gitbook.io/gator/) for documentation and guide on using GATOR and it's module!
+
+# Installation
+
+## Prerequisites
+
+* Python 3.11 or newer installed. You can verify your Python version with the following command:
+```shell
+python --version
+```
+
+## Windows / Unix
+
+```shell
+git clone https://github.com/anrbn/GATOR.git
+cd GATOR/
+pip3 install -r requirements.txt
+python3 gator.py
+```
+
+## Docker
+```shell
+sudo docker pull anrbn/gator:latest
+sudo docker run -v /tmp:/tmp -it anrbn/gator:latest
+```
+
 # Issues
 ## Reporting an Issue
 If you encounter any problems with this tool, I encourage you to let me know. Here are the steps to report an issue:
@@ -93,7 +121,7 @@ Please note that resolving an issue may take some time depending on its complexi
 After an issue is resolved, it will be closed. You can still view closed issues for reference by clicking on the Closed tab on the Issues page.
 
 # Contributing
-I warmly welcome and appreciate contributions from the community! If you're interested in contributing, feel free to submit a pull request (PR) with any new modules or features you'd like to add.
+I warmly welcome and appreciate contributions from the community! If you're interested in contributing on any existing or new modules, feel free to submit a pull request (PR) with any new/existing modules or features you'd like to add.
 
 Once you've submitted a PR, I'll review it as soon as I can. I might request some changes or improvements before merging your PR. Your contributions play a crucial role in making the tool better, and I'm excited to see what you'll bring to the project!
 
