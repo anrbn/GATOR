@@ -11,8 +11,8 @@
 **GATOR** - **GCP Attack Toolkit for Offensive Research**, a tool designed to aid in research and exploiting Google Cloud Environments. It offers a comprehensive range of modules tailored to support users in various attack stages, spanning from Reconnaissance to Impact.  
 
 <p float="left">
-<img src="https://drive.google.com/uc?id=1iTXAtF2MKAX-suOKeIIRTixtGk4UV9lj" width="500" />
-<img src="https://drive.google.com/uc?id=1nQzkdCYh8_8rxVC7zvn6MJrs5wqTzhGV" width="500" />
+<img src="https://drive.google.com/uc?id=1iTXAtF2MKAX-suOKeIIRTixtGk4UV9lj" width="400" />
+<img src="https://drive.google.com/uc?id=1nQzkdCYh8_8rxVC7zvn6MJrs5wqTzhGV" width="400" />
 </p>
 
 ### Modules Implemented
