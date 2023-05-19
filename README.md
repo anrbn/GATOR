@@ -13,7 +13,7 @@
 <div>
 <table>
   <tr>
-   <td><strong>Techniques</strong></td>
+   <td><strong>Tactic</strong></td>
    <td><strong>Resource</strong></td>
    <td><strong>Modules</strong></td>
    <td><strong>Description</strong></td>
@@ -22,38 +22,51 @@
    <td>Recon</td>
    <td>Cloud Functions</td>
    <td>list-function</td>
-  <td>I warmly welcome and appreciate contributions from the community! If you're interested in contributing, feel free to submit a pull request (PR) with any new modules</td>
+  <td>List Functions.</td>
   </tr>
   <tr>
    <td></td>
    <td>Cloud IAM</td>
    <td>custom-roles</td>
+      <td>List Custom Roles.</td>
   </tr>
   <tr>
    <td></td>
    <td>Cloud Storage</td>
    <td>storage-tree</td>
+      <td>List Storage Buckets & Object (Tree).</td>
   </tr>
   <tr>
    <td></td>
    <td>Cloud SQL</td>
    <td>cloudsql-list</td>
+   <td>List Cloud SQL Instances.</td>
+
   </tr>
   <tr>
    <td>Privilege Escalation</td>
    <td>Cloud Functions</td>
    <td>function-deploy</td>
+   <td>PrivEsc via Deploying Cloud Function.</td>
   </tr>
     <tr>
    <td>Persistence</td>
    <td>Cloud IAM</td>
    <td>service-account-keys</td>
+   <td>Persistence via Downloading Service Account Key(s).</td>
   </tr>
       <tr>
    <td>Other</td>
-   <td>N/A</td>
+   <td>Cloud IAM</td>
    <td>createroles</td>
+   <td>Create Custom Roles.</td>
   </tr>
+  <tr>
+  <td></td>
+     <td>Cloud IAM</td>
+   <td>createsa</td>
+   <td>Create Service Accounts.</td>
+   </tr>
 </table>
 </div>
 
