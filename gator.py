@@ -442,9 +442,9 @@ class MyCLI(cmd.Cmd):
                 params = {
                     'project_id': self.project_id,
                 }
-                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set"]]
+                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set", "Sets the Project ID"]]
 
-                headers = ["Parameter", "Type", "Value"]
+                headers = ["Parameter", "Type", "Value", "Description"]
                 print(tabulate(table_data, headers=headers, tablefmt="grid"))
                 return
                     
@@ -469,9 +469,9 @@ class MyCLI(cmd.Cmd):
                 params = {
                     'project_id': self.project_id,
                 }
-                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set"]]
+                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set", "Sets the Project ID"]]
 
-                headers = ["Parameter", "Type", "Value"]
+                headers = ["Parameter", "Type", "Value", "Description"]
                 print(tabulate(table_data, headers=headers, tablefmt="grid"))
                 return
                     
@@ -496,9 +496,9 @@ class MyCLI(cmd.Cmd):
                 params = {
                     'project_id': self.project_id,
                 }
-                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set"]]
+                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set", "Sets the Project ID"]]
 
-                headers = ["Parameter", "Type", "Value"]
+                headers = ["Parameter", "Type", "Value", "Description"]
                 print(tabulate(table_data, headers=headers, tablefmt="grid"))
                 return
                     
@@ -523,9 +523,9 @@ class MyCLI(cmd.Cmd):
                 params = {
                     'project_id': self.project_id,
                 }
-                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set"]]
+                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set", "Sets the Project ID"]]
 
-                headers = ["Parameter", "Type", "Value"]
+                headers = ["Parameter", "Type", "Value", "Description"]
                 print(tabulate(table_data, headers=headers, tablefmt="grid"))
                 return
                     
@@ -550,9 +550,9 @@ class MyCLI(cmd.Cmd):
                 params = {
                     'project_id': self.project_id,
                 }
-                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set"]]
+                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set", "Sets the Project ID"]]
 
-                headers = ["Parameter", "Type", "Value"]
+                headers = ["Parameter", "Type", "Value", "Description"]
                 print(tabulate(table_data, headers=headers, tablefmt="grid"))
                 return
                     
@@ -584,12 +584,12 @@ class MyCLI(cmd.Cmd):
                     'account': self.account,
                     'sadownload': self.sadownload
                 }
-                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set"],
-                            ["bucket", "Mandatory", params["bucket_name"] or "Not Set"],
-                            ["account", "Optional", params["account"] or "Not Set"],
-                            ["sadownload", "Optional", params["sadownload"] or "Not Set"]]
+                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set", "Sets the Project ID"],
+                            ["bucket", "Mandatory", params["bucket_name"] or "Not Set", "Sets the Bucket Name"],
+                            ["account", "Optional", params["account"] or "Not Set", "Sets the underlying Service Account to be used by the Cloud Function"],
+                            ["sadownload", "Optional", params["sadownload"] or "Not Set", "Sets the Service Account to download."]]
 
-                headers = ["Parameter", "Type", "Value"]
+                headers = ["Parameter", "Type", "Value", "Description"]
                 print(tabulate(table_data, headers=headers, tablefmt="grid"))
                 return
 
@@ -626,10 +626,10 @@ class MyCLI(cmd.Cmd):
                     'project_id': self.project_id,
                     'sadownload': self.sadownload,
                 }
-                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set"],
-                            ["sadownload", "Optional", params["sadownload"] or "Not Set"]]
+                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set", "Sets the Project ID"],
+                            ["sadownload", "Optional", params["sadownload"] or "Not Set", "Sets the Service Account to download."]]
 
-                headers = ["Parameter", "Type", "Value"]
+                headers = ["Parameter", "Type", "Value", "Description"]
                 print(tabulate(table_data, headers=headers, tablefmt="grid"))
                 return
 
@@ -669,13 +669,13 @@ class MyCLI(cmd.Cmd):
                     'roleid': self.roleid,
                     'roledesc': self.roledesc
                 }
-                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set"],
-                            [permissions_path, "Mandatory", params["permissions.txt"] or "N/A"],
-                            ["rolename", "Optional", params["rolename"] or "Not Set"],
-                            ["roleid", "Optional", params["roleid"] or "Not Set"],
-                            ["roledesc", "Optional", params["roledesc"] or "Not Set"]]
+                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set", "Sets the Project ID"],
+                            [permissions_path, "Mandatory", params["permissions.txt"] or "N/A", "Sets the Permission(s) to assign to the Role"],
+                            ["rolename", "Optional", params["rolename"] or "Not Set", "Sets the Role Name"],
+                            ["roleid", "Optional", params["roleid"] or "Not Set", "Sets the Role ID"],
+                            ["roledesc", "Optional", params["roledesc"] or "Not Set", "Sets the Role Description"]]
 
-                headers = ["Parameter", "Type", "Value"]
+                headers = ["Parameter", "Type", "Value", "Description"]
                 print(tabulate(table_data, headers=headers, tablefmt="grid"))
                 return
 
@@ -708,12 +708,12 @@ class MyCLI(cmd.Cmd):
                     'roleid': self.roleid,
                     'sadisplayname': self.sadisplayname
                 }
-                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set"],
-                            ["account", "Mandatory", params["account"] or "Not Set"],
-                            ["roleid", "Optional", params["roleid"] or "Not Set"],
-                            ["sadisplayname", "Optional", params["sadisplayname"] or "Not Set"]]
+                table_data = [["projectid", "Mandatory", params["project_id"] or "Not Set", "Sets the Project ID"],
+                            ["account", "Mandatory", params["account"] or "Not Set", "Sets the Service Account Name"],
+                            ["roleid", "Optional", params["roleid"] or "Not Set", "Sets the Role ID"],
+                            ["sadisplayname", "Optional", params["sadisplayname"] or "Not Set", "Sets the Service Account display name"]]
 
-                headers = ["Parameter", "Type", "Value"]
+                headers = ["Parameter", "Type", "Value", "Description"]
                 print(tabulate(table_data, headers=headers, tablefmt="grid"))
                 return
 
