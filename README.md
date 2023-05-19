@@ -6,7 +6,7 @@
 </div>
 
 # 
-![](https://img.shields.io/badge/Python-3.11-%14354C.svg?style=flat-square&logo=python&logoColor=yellow&color=blue) ![](https://img.shields.io/github/release/anrbn/GATOR?style=flat-square&color=success) 
+![](https://img.shields.io/badge/Python-3.11-%14354C.svg?style=flat-square&logo=python&logoColor=yellow&color=blue) ![](https://img.shields.io/github/release/anrbn/GATOR?style=flat-square&color=blueviolet) 
 
 **GATOR** - **GCP Attack Toolkit for Offensive Research**, a tool designed to aid in research and exploiting Google Cloud Environments. It offers a comprehensive range of modules tailored to support users in various attack stages, spanning from Reconnaissance to Impact.  
 
