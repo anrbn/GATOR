@@ -117,9 +117,6 @@ I'll be reviewing reported issues on a regular basis and try to reproduce the is
 
 Please note that resolving an issue may take some time depending on its complexity. I appreciate your patience and understanding.
 
-## Closed Issues
-After an issue is resolved, it will be closed. You can still view closed issues for reference by clicking on the Closed tab on the Issues page.
-
 # Contributing
 I warmly welcome and appreciate contributions from the community! If you're interested in contributing on any existing or new modules, feel free to submit a pull request (PR) with any new/existing modules or features you'd like to add.
 
