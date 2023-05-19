@@ -809,7 +809,7 @@ class MyCLI(cmd.Cmd):
 
             table_data = [self.get_module_info(key, module) for key, module in modules_to_display.items()]
             table_data.sort(key=lambda x: x[0])
-            headers = ["Attack", "Resource", "Module", "Command", "Description"]
+            headers = ["Tactic", "Resource", "Module", "Command", "Description"]
 
             merged_table_data = []
             for attack_name, group in groupby(table_data, lambda x: x[0]):
