@@ -1,0 +1,4 @@
+.env
+gator.egg-info/
+venv/
+folder-structure.txt
