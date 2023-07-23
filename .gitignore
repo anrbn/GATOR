@@ -2,3 +2,5 @@
 gator.egg-info/
 venv/
 folder-structure.txt
+*.pyc
+__pycache__/
