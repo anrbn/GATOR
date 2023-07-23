@@ -1,6 +1,6 @@
 import json
-from gator.auth.credentials import load_credentials
 from googleapiclient import discovery
+from gator.auth.credentials import load_credentials
 
 def list_service_accounts(args):
     """Lists all service accounts for a given project."""
@@ -15,5 +15,7 @@ def list_service_accounts(args):
     request = service.projects().serviceAccounts().list(name=resource)
     response = request.execute()
 
-    # Return the service accounts in a pretty-printed JSON format
-    return json.dumps(response['accounts'], indent=4)
+    # Print each service account in a pretty-printed JSON format
+    #print(json.dumps(response['accounts'], indent=4))
+    for account in response['accounts']:
+        print(json.dumps(account, indent=4))

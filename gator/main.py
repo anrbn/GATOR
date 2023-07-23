@@ -5,7 +5,7 @@ def main():
 
     if hasattr(args, 'func'):
         result = args.func(args)
-        print(result)
+        #print(result)
     else:
         print("No command provided. Use '--help' to see available commands.")
 
