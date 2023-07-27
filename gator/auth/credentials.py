@@ -1,3 +1,5 @@
+# gator/auth/credentials.py
+
 import google.auth
 from google.auth import exceptions
 from google.oauth2 import service_account
@@ -13,8 +15,8 @@ def load_credentials(args):
     try:
         if args.access_token:
             creds = Credentials(args.access_token)
-        elif args.service_account:
-            creds = service_account.Credentials.from_service_account_file(args.service_account)
+        elif args.sa_json_file:
+            creds = service_account.Credentials.from_service_account_file(args.sa_json_file)
         elif args.gcloud:
             creds, _ = google.auth.default()
 
