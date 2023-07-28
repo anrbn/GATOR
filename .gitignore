@@ -5,3 +5,4 @@ folder-structure.txt
 *.pyc
 __pycache__/
 notes.txt
+downloads/

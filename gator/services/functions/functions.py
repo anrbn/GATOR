@@ -53,9 +53,9 @@ def deploy_function(args):
     try:
         function_request = parent.functions().create(location=location, body=function_dict)
         response = function_request.execute()
-        print(f"Function {function_name} created successfully.")
+        print(f"[+] Function {function_name} created successfully.")
         return function_name  # return the function name
     except HttpError as error:
-        print(f"An error occurred: {error}")
+        print(f"[-] Error: {error}")
         return None
 

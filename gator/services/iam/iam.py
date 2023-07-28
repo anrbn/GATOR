@@ -43,7 +43,7 @@ def set_iam_policy(args):
                 }
             )
             request.execute()
-            print(f"IAM policy set for function {args.function_name}.")
+            print(f"[+] IAM policy set for function {args.function_name}.")
         except HttpError as error:
-            print(f"An error occurred: {error}")
+            print(f"[-] Error: {error}")
 
