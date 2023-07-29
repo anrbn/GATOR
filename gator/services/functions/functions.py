@@ -13,8 +13,6 @@ def list_functions(args):
         ph.red(("[-] Error: --verbose or -v and --json-output can't be used at the same time."))
         return
     
-    ph.green((f"\n[+] Enumerating Cloud Functions for project {args.project_id} ...\n"))
-    
     creds = load_credentials(args)
     service = build('cloudfunctions', 'v2', credentials=creds)
     parent = f'projects/{args.project_id}/locations/-'
@@ -24,8 +22,9 @@ def list_functions(args):
     functions = response.get('functions', [])
 
     if not functions:
-        ph.yellow(("[!] No Cloud Functions found in this Project."))
+        ph.yellow(("\n[!] No Cloud Functions found in this Project.\n"))
     else:
+        ph.green((f"\n[+] Enumerating Cloud Functions for project {args.project_id} ...\n"))
         for function in functions:
             if args.json_output:
                 print(json.dumps(function, indent=4))
@@ -38,8 +37,12 @@ def list_functions(args):
                 print((f"   - Entry Point: {function['buildConfig']['entryPoint']}"))
                 print((f"   - Runtime: {function['buildConfig']['runtime']}"))
                 print((f"   - Region: {function['name'].split('/')[3]}"))
-                serviceConfig = function['serviceConfig']
-                print((f"   - Service Account Email: {serviceConfig['serviceAccountEmail']}")) 
+
+                if 'serviceConfig' in function:
+                    serviceConfig = function['serviceConfig']
+                    print((f"   - Service Account Email: {serviceConfig.get('serviceAccountEmail', 'Not Available, as function is in Deployment State!')}"))
+                else:
+                    print("   - Service Account Email: Not Available, as function is in Deployment State!")
 
             elif args.verbose:
                 ph.green((f"Cloud Function: {function['name'].split('/')[-1]}"))
@@ -60,21 +63,24 @@ def list_functions(args):
                 else:
                     print((f"     - Docker Registry: None"))
                 
-                serviceConfig = function['serviceConfig']
-                print(("   - Service Config:"))
-                print((f"     - Timeout: {serviceConfig['timeoutSeconds']} seconds"))
-                print((f"     - Max Instances: {serviceConfig['maxInstanceCount']}"))
-                print((f"     - Ingress Settings: {serviceConfig['ingressSettings']}"))
-                print((f"     - URI: {serviceConfig['uri']}"))
-                print((f"     - Service Account Email: {serviceConfig['serviceAccountEmail']}"))
-                print((f"     - Available Memory: {serviceConfig['availableMemory']}"))
-                print((f"     - Revision: {serviceConfig['revision']}"))
-                print((f"     - Max Instance Request Concurrency: {serviceConfig['maxInstanceRequestConcurrency']}"))
+                if 'serviceConfig' in function:
+                    serviceConfig = function['serviceConfig']
+                    print(("   - Service Config:"))
+                    print((f"     - Timeout: {serviceConfig['timeoutSeconds']} seconds"))
+                    print((f"     - Max Instances: {serviceConfig['maxInstanceCount']}"))
+                    print((f"     - Ingress Settings: {serviceConfig['ingressSettings']}"))
+                    print((f"     - URI: {serviceConfig['uri']}"))
+                    print((f"     - Service Account Email: {serviceConfig.get('serviceAccountEmail', 'Not Available, as function is in Deployment State!')}"))
+                    print((f"     - Available Memory: {serviceConfig['availableMemory']}"))
+                    print((f"     - Revision: {serviceConfig['revision']}"))
+                    print((f"     - Max Instance Request Concurrency: {serviceConfig['maxInstanceRequestConcurrency']}"))
                 
-                if 'securityLevel' in serviceConfig:
-                    print((f"     - Security Level: {serviceConfig['securityLevel']}"))
+                    if 'securityLevel' in serviceConfig:
+                        print((f"     - Security Level: {serviceConfig['securityLevel']}"))
+                    else:
+                        print((f"     - Security Level: None"))
                 else:
-                    print((f"     - Security Level: None"))
+                    print("   - Service Config: Not Available")
             print()
 
 
