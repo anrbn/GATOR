@@ -88,10 +88,8 @@ def deploy_function(args):
     creds = load_credentials(args)
     service = build('cloudfunctions', 'v1', credentials=creds)
 
-    # Default to 'us-central1' region if not provided
     region = args.region if args.region else 'us-central1'
 
-    # Generate a random function name if not provided
     function_name = args.function_name if args.function_name else 'func' + str(uuid.uuid4())[:6]
     
     location = f'projects/{args.project_id}/locations/{region}'
@@ -106,7 +104,6 @@ def deploy_function(args):
         'sourceArchiveUrl': args.source,
     }
 
-    # If a service account is provided, add it to the function_dict
     if hasattr(args, 'service_account') and args.service_account:
         function_dict['serviceAccountEmail'] = args.service_account
 
@@ -114,7 +111,7 @@ def deploy_function(args):
         function_request = parent.functions().create(location=location, body=function_dict)
         response = function_request.execute()
         ph.green(f"[+] Function {function_name} created successfully.")
-        return function_name  # return the function name
+        return function_name 
     except HttpError as error:
         ph.red(f"[-] Error: {error}")
         return None

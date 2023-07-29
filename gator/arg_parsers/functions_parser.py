@@ -21,6 +21,13 @@ def functions_parser(parent_parser):
     check_permissions_parser.add_argument('--project-id', required=True, help='The project ID.')
     check_permissions_parser.set_defaults(func=functions.check_permissions)
 
+    # parser for 'check-env-vars' command
+    check_env_var_parser = subparsers.add_parser('check-env-vars', parents=[parent_parser])
+    check_env_var_parser.add_argument('--project-id', required=True, help='The project ID.')
+    check_env_var_parser.add_argument('--function-name', help='The name of the function to check Environment Variables for.')
+    check_env_var_parser.add_argument('--region', help='The region the function is in.')
+    check_env_var_parser.set_defaults(func=functions.check_env_vars)
+
     # parser for 'deploy' command
     deploy_functions_parser = subparsers.add_parser('deploy', parents=[parent_parser])
     deploy_functions_parser.add_argument('--project-id', required=True, help='The project ID.')

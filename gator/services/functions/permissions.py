@@ -18,7 +18,7 @@ def check_permissions(args):
     if not functions:
         ph.yellow("\n[!] No Cloud Functions found in this Project.\n")
     else: 
-        ph.green((f"\n[+] Checking Permissions for Cloud Functions in project {args.project_id} ...\n"))
+        ph.green(f"\n[+] Checking Permissions for Cloud Functions in project {args.project_id} ...\n")
 
         for function in functions:
 
