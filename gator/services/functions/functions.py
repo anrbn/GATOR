@@ -6,9 +6,15 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 from gator.auth.credentials import load_credentials
+import gator.helpers.print_helper as ph
 
 def list_functions(args):
-
+    if args.verbose and args.json_output:
+        ph.red(("[-] Error: --verbose or -v and --json-output can't be used at the same time."))
+        return
+    
+    ph.green((f"\n[+] Enumerating Cloud Functions for project {args.project_id} ...\n"))
+    
     creds = load_credentials(args)
     service = build('cloudfunctions', 'v2', credentials=creds)
     parent = f'projects/{args.project_id}/locations/-'
@@ -18,10 +24,58 @@ def list_functions(args):
     functions = response.get('functions', [])
 
     if not functions:
-        print("No Cloud Functions found in this Project.")
+        ph.yellow(("[!] No Cloud Functions found in this Project."))
     else:
         for function in functions:
-            print(f"Function:\n{json.dumps(function, indent=4)}\n")
+            if args.json_output:
+                print(json.dumps(function, indent=4))
+                print()
+                continue
+            
+            if not args.verbose:
+                ph.green((f"Cloud Function: {function['name'].split('/')[-1]}"))
+                print((f"   - Status: {function['state']}"))
+                print((f"   - Entry Point: {function['buildConfig']['entryPoint']}"))
+                print((f"   - Runtime: {function['buildConfig']['runtime']}"))
+                print((f"   - Region: {function['name'].split('/')[3]}"))
+                serviceConfig = function['serviceConfig']
+                print((f"   - Service Account Email: {serviceConfig['serviceAccountEmail']}")) 
+
+            elif args.verbose:
+                ph.green((f"Cloud Function: {function['name'].split('/')[-1]}"))
+                print((f"   - Status: {function['state']}"))
+                print((f"   - Entry Point: {function['buildConfig']['entryPoint']}"))
+                print((f"   - Runtime: {function['buildConfig']['runtime']}"))
+                print((f"   - Region: {function['name'].split('/')[3]}"))
+                print((f"   - Update Time: {function['updateTime']}"))
+                labels = function['labels']
+                print(("   - Labels:"))
+                for label in labels.keys():
+                    print((f"     - {label}: {labels[label]}"))
+                print((f"   - Environment: {function['environment']}"))
+                print((f"   - URL: {function['url']}"))
+
+                if 'dockerRegistry' in function['buildConfig']:
+                    print((f"     - Docker Registry: {function['buildConfig']['dockerRegistry']}"))
+                else:
+                    print((f"     - Docker Registry: None"))
+                
+                serviceConfig = function['serviceConfig']
+                print(("   - Service Config:"))
+                print((f"     - Timeout: {serviceConfig['timeoutSeconds']} seconds"))
+                print((f"     - Max Instances: {serviceConfig['maxInstanceCount']}"))
+                print((f"     - Ingress Settings: {serviceConfig['ingressSettings']}"))
+                print((f"     - URI: {serviceConfig['uri']}"))
+                print((f"     - Service Account Email: {serviceConfig['serviceAccountEmail']}"))
+                print((f"     - Available Memory: {serviceConfig['availableMemory']}"))
+                print((f"     - Revision: {serviceConfig['revision']}"))
+                print((f"     - Max Instance Request Concurrency: {serviceConfig['maxInstanceRequestConcurrency']}"))
+                
+                if 'securityLevel' in serviceConfig:
+                    print((f"     - Security Level: {serviceConfig['securityLevel']}"))
+                else:
+                    print((f"     - Security Level: None"))
+            print()
 
 
 def deploy_function(args):
@@ -53,9 +107,9 @@ def deploy_function(args):
     try:
         function_request = parent.functions().create(location=location, body=function_dict)
         response = function_request.execute()
-        print(f"[+] Function {function_name} created successfully.")
+        ph.green(f"[+] Function {function_name} created successfully.")
         return function_name  # return the function name
     except HttpError as error:
-        print(f"[-] Error: {error}")
+        ph.red(f"[-] Error: {error}")
         return None
 
