@@ -10,7 +10,7 @@ def functions_parser(parent_parser):
     subparsers = functions_parser.add_subparsers()
 
     # parser for 'list' command
-    list_functions_parser = subparsers.add_parser('list', parents=[parent_parser])
+    list_functions_parser = subparsers.add_parser('enumerate', parents=[parent_parser])
     list_functions_parser.add_argument('--project-id', required=True, help='The project ID.')
     list_functions_parser.add_argument('--verbose', '-v', action='store_true', help='Verbose List.')
     list_functions_parser.add_argument('--json-output', action='store_true', help='Output in JSON format.')
