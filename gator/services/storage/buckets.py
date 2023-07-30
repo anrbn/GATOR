@@ -10,6 +10,5 @@ def list_buckets(args):
     client = storage.Client(credentials=creds, project=args.project_id)
     buckets = client.list_buckets()
 
-    # Convert each bucket's properties to JSON and print
     for bucket in buckets:
         print(json.dumps(bucket._properties, indent=4))

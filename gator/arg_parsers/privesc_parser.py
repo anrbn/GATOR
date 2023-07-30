@@ -6,7 +6,6 @@ from gator.services.red.privesc import privesc_function_deploy
 def privesc_parser(parent_parser=None):
     privesc_parser = ArgumentParser(add_help=False, parents=[parent_parser] if parent_parser is not None else [])
 
-    # Adding 'function' as a subparser
     function_parser = privesc_parser.add_subparsers().add_parser('function', parents=[parent_parser])
 
     deploy_parser = function_parser.add_subparsers().add_parser('deploy', parents=[parent_parser])

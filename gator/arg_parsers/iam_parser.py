@@ -24,8 +24,6 @@ def iam_parser(parent_parser):
     download_service_account_parser.add_argument('--project-id', required=True, help='The project ID.')
     download_service_account_parser.add_argument('--service-account', required=True, help='The service account(s) to download keys for, separated by comma.')
     download_service_account_parser.add_argument('--format', required=True, help='The format to download the service account in.')
-
-#    download_service_account_parser.add_argument('--format', choices=['json', 'P12'], required=True, help='The format of the service account key file to download.')
     download_service_account_parser.set_defaults(func=download_service_account)
 
     # 'set-iam-policy' parser

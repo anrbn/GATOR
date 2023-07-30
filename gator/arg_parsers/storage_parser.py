@@ -1,7 +1,7 @@
 from argparse import ArgumentParser
 
 from gator.services.storage.buckets import list_buckets
-from gator.services.storage.objects import list_objects  # New import
+from gator.services.storage.objects import list_objects
 
 def storage_parser(parent_parser):
     storage_parser = ArgumentParser(add_help=False, parents=[parent_parser])

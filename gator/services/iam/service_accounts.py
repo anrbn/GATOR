@@ -10,13 +10,9 @@ from gator.auth.credentials import load_credentials
 
 def list_service_accounts(args):
     """Lists all service accounts for a given project."""
-    # Load the credentials
     creds = load_credentials(args)
-
-    # Build the service
     service = discovery.build('iam', 'v1', credentials=creds)
 
-    # Get the service accounts
     resource = f'projects/{args.project_id}'
     request = service.projects().serviceAccounts().list(name=resource)
     response = request.execute()
@@ -67,7 +63,7 @@ def save_service_account_key(args, key, service_account):
         p12 = crypto.PKCS12()
         pkey = crypto.load_privatekey(crypto.FILETYPE_PEM, key['private_key'])
         p12.set_privatekey(pkey)
-        password = "notasecret" # the password for all Google-issued private keys
+        password = "notasecret"
         with open(filename, 'wb') as f:
             f.write(p12.export(passphrase=password))
     print(f'Service account key saved to {filename}.')
