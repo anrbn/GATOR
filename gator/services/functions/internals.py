@@ -1,3 +1,5 @@
+# gator/services/functions/internals.py
+
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from gator.auth.credentials import load_credentials
@@ -22,7 +24,7 @@ def check_env_vars(args):
             env_vars = service_config.get('environmentVariables', {})
 
             if not env_vars:
-                ph.yellow("[!] No environment variables set.")
+                ph.yellow(f"[!] No environment variables set for function {function['name'].split('/')[-1]}!")
             else:
                 for var, value in env_vars.items():
                     print(f"{var}: {value}")
@@ -53,7 +55,7 @@ def check_env_vars_for_function(function, project_id):
     env_vars = service_config.get('environmentVariables', {})
 
     if not env_vars:
-        ph.yellow("[!] No environment variables set.")
+        ph.yellow(f"[!] No environment variables set for function {function['name'].split('/')[-1]}!")
     else:
         for var, value in env_vars.items():
             print(f"- Cloud Function: {function['name'].split('/')[-1]}")

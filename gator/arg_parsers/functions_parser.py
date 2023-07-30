@@ -28,6 +28,13 @@ def functions_parser(parent_parser):
     check_env_var_parser.add_argument('--region', help='The region the function is in.')
     check_env_var_parser.set_defaults(func=functions.check_env_vars)
 
+    # parser for 'check-triggers' command
+    check_triggers_parser = subparsers.add_parser('list-triggers', parents=[parent_parser])
+    check_triggers_parser.add_argument('--project-id', required=True, help='The project ID.')
+    check_triggers_parser.add_argument('--function-name', help='The name of the function to check the trigger for.')
+    check_triggers_parser.add_argument('--region', help='The region the function is in.')
+    check_triggers_parser.set_defaults(func=functions.list_triggers)
+
     # parser for 'deploy' command
     deploy_functions_parser = subparsers.add_parser('deploy', parents=[parent_parser])
     deploy_functions_parser.add_argument('--project-id', required=True, help='The project ID.')
