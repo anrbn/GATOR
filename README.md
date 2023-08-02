@@ -1,5 +1,5 @@
 ```
-gator: A gcloud clone for managing Google Cloud resources.
+GATOR: GCP Attack Toolkit for Offensive Research
 
 Command groups:
     iam                                 IAM Management
