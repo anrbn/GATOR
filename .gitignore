@@ -1,10 +1,11 @@
 .env
 gator.egg-info/
 venv/
-folder-structure.txt
+folderstructure.txt
 *.pyc
 __pycache__/
 notes.txt
 downloads/
 pips.txt
 state.json
+faults.txt
