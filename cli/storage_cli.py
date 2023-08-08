@@ -1,6 +1,7 @@
 # cli/storage_cli.py
 
 import click
+
 from custom.custom_cli import CustomGroup, CustomCommand
 from modules.storage.buckets import storage_list_buckets
 from modules.storage.permissions import storage_list_permissions
@@ -45,5 +46,4 @@ def list_permissions(project_id, bucket_name):
     storage_list_permissions(project_id, bucket_name)
 
 buckets.add_command(list_permissions, name="permissions")
-
 storage.add_command(buckets)

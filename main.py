@@ -4,8 +4,9 @@ import click
 
 from custom.custom_cli import CustomGroup
 
-from cli import storage
 from auth import auth_commands
+from cli.storage_cli import storage
+from cli.functions_cli import functions
 
 @click.group(cls=CustomGroup)
 def main():
@@ -15,8 +16,13 @@ def main():
     from Reconnaissance to Impact."""
     pass
 
-main.add_command(storage)
 main.add_command(auth_commands.auth)
+main.add_command(storage)
+main.add_command(functions)
 
 if __name__ == '__main__':
     main()
+
+
+
+

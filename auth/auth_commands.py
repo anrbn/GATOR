@@ -13,15 +13,24 @@ STATE_FILE = "state.json"
 def auth():
     """Authentication Sub-Command Group.
 
-    Commands related to authentication, including listing, activating, and adding authentication methods.
+    Commands related to authentication, including adding, listing, activating, and deleting authentication methods.
     """
     pass
 
 def get_auth_elements():
     state = {}
+
     if os.path.exists(STATE_FILE):
         with open(STATE_FILE, "r") as f:
-            state = json.load(f)
+            try:
+                state = json.load(f)
+            except json.JSONDecodeError:
+                ph.print_error("State File is corrupted.")
+                ph.print_info("Fixing the state.json File.")
+                ph.print_info("Fixed!")
+                print()
+                state = {}
+
     elements = []
     if "key_files" in state:
         for key_file in state["key_files"]:
@@ -30,7 +39,8 @@ def get_auth_elements():
         for access_token in state["access_tokens"]:
             elements.append(("Access Token", access_token))
     return elements, state
-
+    
+        
 @click.command(cls=CustomCommand)
 def auth_list():
     """List all authentication methods.
@@ -41,7 +51,7 @@ def auth_list():
     """
     elements, state = get_auth_elements()
     if elements:
-        header = "(+) Service Accounts / Access Tokens:"
+        header = "\n(+) Service Accounts / Access Tokens:"
         separator = "-" * len(header)
         print()
         ph.yellow(f"{separator}\n{header}\n{separator}")
@@ -90,11 +100,10 @@ def auth_activate(index):
 def activate_service_account(key_file, access_token):
     """Add an authentication method.
 
-    Adds either a key file or an access token for use in authenticating with the service.
+    Adds either a key file or an access token to the Index.
 
     Examples:                                                                gator auth add --key-file "path/to/key_file"                                                                gator auth add --access-token "access_token"
     """
-    # Check if either key_file or access_token is provided
     if not key_file and not access_token:
         ph.print_error("Either --key-file or --access-token should be provided.\n")
         return
@@ -106,7 +115,14 @@ def activate_service_account(key_file, access_token):
 
     if os.path.exists(STATE_FILE):
         with open(STATE_FILE, "r") as f:
-            state = json.load(f)
+            try:
+                state = json.load(f)
+            except json.JSONDecodeError:
+                ph.print_error("State File is corrupted.")
+                ph.print_info("Fixing the state.json File.")
+                ph.print_info("Fixed!")
+                print()
+                state = {}
     
     if key_file:
         if "key_files" not in state:
@@ -132,7 +148,7 @@ def activate_service_account(key_file, access_token):
         json.dump(state, f)
 
 @auth.command(name='delete', cls=CustomCommand)
-@click.argument('indices', type=str)  # Note the change here
+@click.argument('indices', type=str)
 def auth_delete(indices):
     """Delete a specific authentication method.
 
@@ -144,17 +160,15 @@ def auth_delete(indices):
     
     elements, state = get_auth_elements()
     
-    # Handle case where user wants to delete all authentication methods
-    if indices.lower() == "all":  # Added a .lower() to handle any case variations like 'ALL', 'All', etc.
+    if indices.lower() == "all":
         state["key_files"] = []
         state["access_tokens"] = []
         state["activated"] = None
         ph.print_success("Deleted all authentication mechanisms.\n")
     else:
-        # Split the indices string on comma to handle multiple indices
-        indices_list = [int(idx.strip()) for idx in indices.split(',')]  # Convert to integers here
+        indices_list = [int(idx.strip()) for idx in indices.split(',')]
         
-        for index in sorted(indices_list, reverse=True):  # Sorting to delete from end
+        for index in sorted(indices_list, reverse=True):
             if index > 0 and index <= len(elements):
                 mechanism, value = elements[index - 1]
                 if mechanism == "Service Account":
@@ -165,10 +179,10 @@ def auth_delete(indices):
                 if state.get("activated") == value:
                     state["activated"] = None
 
-                ph.print_success(f"Deleted authentication mechanism {index}\n")
+                ph.print_success(f"Deleted authentication mechanism {index}")
             else:
-                ph.print_error(f"Invalid index for deletion: {index}\n")
+                ph.print_error(f"Invalid index for deletion: {index}")
+        print()
     
-    # Save the state back
     with open(STATE_FILE, "w") as f:
         json.dump(state, f)

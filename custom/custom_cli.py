@@ -49,14 +49,13 @@ class CustomGroup(click.Group):
             command_path.append(curr_ctx.info_name)
             curr_ctx = curr_ctx.parent
         command_path.reverse()
-        full_command_path = ' '.join(command_path[1:])  # Exclude the first element, typically "main"
+        full_command_path = ' '.join(command_path[1:])
 
         formatter.write_text("USAGE:")  
         if not full_command_path:  
             formatter.write_text(f"{INDENT}gator [GROUPS | COMMANDS] [OPTIONS]")
         else:
             formatter.write_text(f"{INDENT}gator {full_command_path} [GROUPS | COMMANDS] [OPTIONS]")
-        # formatter.write_paragraph()  # Add an empty line after USAGE
 
     def format_help(self, ctx, formatter):
         """Writes the complete help text to the formatter."""
@@ -68,15 +67,12 @@ class CustomGroup(click.Group):
     def write_options(self, ctx, formatter, opts):
         """Writes options into the formatter."""
         
-        # Calculate the maximum width of the option names for alignment.
         max_width = max(len(', '.join(opt.opts)) for opt in opts)
         
         for opt in opts:
-            # Gets the formatted option (like --help) and its help text.
             opts_str = ', '.join(opt.opts).ljust(max_width)
             help_str = opt.help or ''
             
-            # Writes the padded option and its description to the formatter.
             formatter.write_dl([(opts_str, help_str)])
 
 """
@@ -99,9 +95,8 @@ class CustomCommand(click.Command):
 
     def format_usage(self, ctx, formatter):
         """Writes the usage format to the formatter."""
-        INDENT = '  '  # 4 spaces for indentation
-        
-        # Collect the full command path.
+        INDENT = '  '  
+
         command_path = []
         curr_ctx = ctx
         while curr_ctx is not None:
@@ -109,7 +104,6 @@ class CustomCommand(click.Command):
             curr_ctx = curr_ctx.parent
         command_path.reverse()
         
-        # Remove the first element (typically "main") from the path.
         full_command_path = ' '.join(command_path[1:])
         
         formatter.write_text("USAGE:")
@@ -117,7 +111,6 @@ class CustomCommand(click.Command):
             formatter.write_text(f"{INDENT}gator [GROUPS | COMMANDS] [OPTIONS]")
         else:
             formatter.write_text(f"{INDENT}gator {full_command_path} [GROUPS | COMMANDS] [OPTIONS]")
-        # You can uncomment the following line if you want a newline after the usage.
         # formatter.write_paragraph()
 
     def format_options(self, ctx, formatter):
