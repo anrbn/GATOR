@@ -1,5 +1,6 @@
 .env
-gator.egg-info/
+*.egg
+*.egg-info/
 venv/
 folderstructure.txt
 *.pyc
@@ -11,3 +12,5 @@ state.json
 faults.txt
 pipinstall.txt
 notes/
+dist/
+build/

@@ -1,13 +1,23 @@
 from setuptools import setup, find_packages
 
-# Read requirements.txt with UTF-8 encoding
+with open("README.md", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
+
+# Read the version from the VERSION file
+with open("VERSION", "r") as v:
+    version = v.read().strip()
+
+# Read requirements from the requirements.txt
 with open("requirements.txt", "r", encoding="utf-16") as f:
     requirements = f.read().splitlines()
+
 setup(
-    name="gator",
-    version="0.6.1",
+    name="gator-red",
+    version=version,
     packages=find_packages(),
     install_requires=requirements,
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     entry_points={
         'console_scripts': [
             'gator=gator.main:main',
