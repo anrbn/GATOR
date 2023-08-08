@@ -34,6 +34,9 @@ def functions_list_triggers(project_id, function_name):
 
     try: 
         creds = load_credentials()
+        if creds is None:
+            # ph.print_error("Failed to load credentials. Exiting.")
+            return        
         service = build('cloudfunctions', 'v2', credentials=creds)
         parent = f'projects/{project_id}/locations/-'
         response = service.projects().locations().functions().list(parent=parent).execute()

@@ -13,6 +13,9 @@ def storage_list_buckets(project_id, verbose, json_output):
 
     try:
         creds = load_credentials()
+        if creds is None:
+            # ph.print_error("Failed to load credentials. Exiting.")
+            return        
         service = build('storage', 'v1', credentials=creds)
         request = service.buckets().list(project=project_id)
 

@@ -8,6 +8,9 @@ from utils import print_helpers as ph
 def storage_list_permissions(project_id, bucket_name):
     try:
         creds = load_credentials()
+        if creds is None:
+            # ph.print_error("Failed to load credentials. Exiting.")
+            return
         service = build('storage', 'v1', credentials=creds)
         
         if bucket_name:

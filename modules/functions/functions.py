@@ -15,9 +15,9 @@ def functions_list_functions(project_id, verbose, json_output):
             return
 
         creds = load_credentials()
-        # if creds is None:
-        #     # ph.print_error("Failed to load credentials. Exiting.")
-        #     return
+        if creds is None:
+            # ph.print_error("Failed to load credentials. Exiting.")
+            return
 
         service = build('cloudfunctions', 'v2', credentials=creds)
         parent = f'projects/{project_id}/locations/-'
@@ -111,6 +111,9 @@ def functions_list_functions(project_id, verbose, json_output):
 
 def functions_deploy_functions(region, function_name, project_id, entry_point, runtime, service_account, source):
     creds = load_credentials()
+    if creds is None:
+        # ph.print_error("Failed to load credentials. Exiting.")
+        return    
     service = build('cloudfunctions', 'v1', credentials=creds) # Include V2
 
     region = region if region else 'us-central1'

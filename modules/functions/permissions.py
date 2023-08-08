@@ -8,6 +8,9 @@ from utils import print_helpers as ph
 def functions_list_permissions(project_id):
     try:
         creds = load_credentials()
+        if creds is None:
+            # ph.print_error("Failed to load credentials. Exiting.")
+            return        
         service = build('cloudfunctions', 'v2', credentials=creds)
 
         response = service.projects().locations().functions().list(
