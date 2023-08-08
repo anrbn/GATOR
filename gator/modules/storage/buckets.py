@@ -3,8 +3,8 @@
 import json
 from googleapiclient.discovery import build
 
-from auth.credentials import load_credentials
-from utils import print_helpers as ph
+from gator.auth.credentials import load_credentials
+from gator.utils import print_helpers as ph
 
 def storage_list_buckets(project_id, verbose, json_output):
     if verbose and json_output:

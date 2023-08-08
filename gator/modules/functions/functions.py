@@ -5,8 +5,8 @@ import json
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-from auth.credentials import load_credentials
-from utils import print_helpers as ph
+from gator.auth.credentials import load_credentials
+from gator.utils import print_helpers as ph
 
 def functions_list_functions(project_id, verbose, json_output):
     try:

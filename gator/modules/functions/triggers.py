@@ -2,8 +2,8 @@
 
 from googleapiclient.discovery import build
 
-from auth.credentials import load_credentials
-from utils import print_helpers as ph
+from gator.auth.credentials import load_credentials
+from gator.utils import print_helpers as ph
 
 def functions_list_triggers(project_id, function_name):
 

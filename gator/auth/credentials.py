@@ -5,22 +5,28 @@ import json
 from google.oauth2.credentials import Credentials
 from google.oauth2 import service_account
 
-from utils import print_helpers as ph
+from gator.utils import print_helpers as ph
 
-STATE_FILE = "state.json"
+HOME = os.path.expanduser("~")
+STATE_DIR = os.path.join(HOME, '.gator')
+STATE_FILE = os.path.join(STATE_DIR, 'state.json')
+
+# Ensure the .gator directory exists.
+if not os.path.exists(STATE_DIR):
+    os.makedirs(STATE_DIR)
 
 def load_credentials():
     """Loads credentials based on the activated state."""
     
     if not os.path.exists(STATE_FILE):
-        ph.print_error("State file not found. Ensure you have authenticated before proceeding.\n")
+        ph.print_error("state.json file not found. Ensure you have authenticated before proceeding.\n")
         return None
     
     with open(STATE_FILE, 'r') as f:
         try:
             state = json.load(f)
         except json.JSONDecodeError:
-            ph.print_error("State file is corrupted. Please re-authenticate.\n")
+            ph.print_error("state.json file is corrupted. Please re-authenticate.\n")
             return None
 
     activated = state.get("activated")

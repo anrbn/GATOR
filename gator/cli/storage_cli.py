@@ -2,9 +2,9 @@
 
 import click
 
-from custom.custom_cli import CustomGroup, CustomCommand
-from modules.storage.buckets import storage_list_buckets
-from modules.storage.permissions import storage_list_permissions
+from gator.custom.custom_cli import CustomGroup, CustomCommand
+from gator.modules.storage.buckets import storage_list_buckets
+from gator.modules.storage.permissions import storage_list_permissions
 
 @click.group(cls=CustomGroup)
 def storage():

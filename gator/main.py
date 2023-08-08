@@ -2,11 +2,11 @@
 
 import click
 
-from custom.custom_cli import CustomGroup
+from gator.custom.custom_cli import CustomGroup
 
-from auth import auth_commands
-from cli.storage_cli import storage
-from cli.functions_cli import functions
+from gator.auth import auth_commands
+from gator.cli.storage_cli import storage
+from gator.cli.functions_cli import functions
 
 @click.group(cls=CustomGroup)
 def main():

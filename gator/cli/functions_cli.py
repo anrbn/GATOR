@@ -2,9 +2,9 @@
 
 import click
 
-from custom.custom_cli import CustomGroup, CustomCommand
+from gator.custom.custom_cli import CustomGroup, CustomCommand
 # from modules.functions import list_functions, list_function_triggers, functions_list_permissions
-from modules.functions import functions_list_permissions, functions_list_triggers, functions_list_functions
+from gator.modules.functions import functions_list_permissions, functions_list_triggers, functions_list_functions
 
 @click.group(cls=CustomGroup)
 def functions():

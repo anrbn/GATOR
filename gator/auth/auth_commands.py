@@ -4,15 +4,19 @@ import os
 import json
 import click
 
-from utils import print_helpers as ph
-from custom.custom_cli import CustomGroup, CustomCommand
+from gator.utils import print_helpers as ph
+from gator.custom.custom_cli import CustomGroup, CustomCommand
 
-STATE_FILE = "state.json"
+HOME = os.path.expanduser("~")
+STATE_DIR = os.path.join(HOME, '.gator')
+STATE_FILE = os.path.join(STATE_DIR, 'state.json')
+
+if not os.path.exists(STATE_DIR):
+    os.makedirs(STATE_DIR)
 
 @click.group(cls=CustomGroup)
 def auth():
     """Authentication Sub-Command Group.
-
     Commands related to authentication, including adding, listing, activating, and deleting authentication methods.
     """
     pass
@@ -39,7 +43,6 @@ def get_auth_elements():
         for access_token in state["access_tokens"]:
             elements.append(("Access Token", access_token))
     return elements, state
-    
         
 @click.command(cls=CustomCommand)
 def auth_list():
@@ -51,7 +54,7 @@ def auth_list():
     """
     elements, state = get_auth_elements()
     if elements:
-        header = "\n(+) Service Accounts / Access Tokens:"
+        header = "(+) Service Accounts / Access Tokens:"
         separator = "-" * len(header)
         print()
         ph.yellow(f"{separator}\n{header}\n{separator}")
