@@ -1,4 +1,6 @@
 
+
+
 <div align="center">
 
 <p><img src="https://drive.google.com/uc?id=16Bs9-czIY7Huz2AIluTRtZrotQuXBu1F"></p>
@@ -16,65 +18,77 @@
 </p>
 
 ### Modules Implemented
-<div>
 <table>
-  <tr>
-   <td><strong>Tactic</strong></td>
-   <td><strong>Resource</strong></td>
-   <td><strong>Modules</strong></td>
-   <td><strong>Description</strong></td>
-  </tr>
-  <tr>
-   <td>Recon</td>
-   <td>Cloud Functions</td>
-   <td>list-function</td>
-  <td>List Functions.</td>
-  </tr>
-  <tr>
-   <td></td>
-   <td>Cloud IAM</td>
-   <td>custom-roles</td>
-      <td>List Custom Roles.</td>
-  </tr>
-  <tr>
-   <td></td>
-   <td>Cloud Storage</td>
-   <td>storage-tree</td>
-      <td>List Storage Buckets & Object (Tree).</td>
-  </tr>
-  <tr>
-   <td></td>
-   <td>Cloud SQL</td>
-   <td>cloudsql-list</td>
-   <td>List Cloud SQL Instances.</td>
-
-  </tr>
-  <tr>
-   <td>Privilege Escalation</td>
-   <td>Cloud Functions</td>
-   <td>function-deploy</td>
-   <td>PrivEsc via Deploying Cloud Function.</td>
-  </tr>
+  <thead>
     <tr>
-   <td>Persistence</td>
-   <td>Cloud IAM</td>
-   <td>service-account-keys</td>
-   <td>Persistence via Downloading Service Account Key(s).</td>
-  </tr>
-      <tr>
-   <td>Other</td>
-   <td>Cloud IAM</td>
-   <td>createroles</td>
-   <td>Create Custom Roles.</td>
-  </tr>
-  <tr>
-  <td></td>
-     <td>Cloud IAM</td>
-   <td>createsa</td>
-   <td>Create Service Accounts.</td>
-   </tr>
+      <th>Resource Category</th>
+      <th>Primary Module</th>
+      <th>Command Group</th>
+      <th>Operation</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="4">User Authentication</td>
+      <td rowspan="4">auth</td>
+      <td>-</td>
+      <td>activate</td>
+      <td>Activate a Specific Authentication Method</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>add</td>
+      <td>Add a New Authentication Method</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>delete</td>
+      <td>Remove a Specific Authentication Method</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>list</td>
+      <td>List All Available Authentication Methods</td>
+    </tr>
+    <tr>
+      <td rowspan="3">Cloud Functions</td>
+      <td rowspan="3">functions</td>
+      <td>-</td>
+      <td>list</td>
+      <td>List All Deployed Cloud Functions</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>permissions</td>
+      <td>Display Permissions for a Specific Cloud Function</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>triggers</td>
+      <td>List All Triggers for a Specific Cloud Function</td>
+    </tr>
+    <tr>
+      <td rowspan="2">Cloud Storage</td>
+      <td rowspan="2">storage</td>
+      <td>buckets</td>
+      <td>list</td>
+      <td>List All Storage Buckets</td>
+    </tr>
+    <tr>
+      <td>buckets</td>
+      <td>permissions</td>
+      <td>Display Permissions for Storage Buckets</td>
+    </tr>
+    <tr>
+      <td>Compute Engine</td>
+      <td>compute</td>
+      <td>instances</td>
+      <td>add-ssh-key</td>
+      <td>Add SSH Key to Compute Instances</td>
+    </tr>
+  </tbody>
 </table>
-</div>
 
 # Documentation
 
