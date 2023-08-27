@@ -1,13 +1,17 @@
-# modules/functions/triggers.py
-
 from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
 
 from gator.auth.credentials import load_credentials
 from gator.utils import print_helpers as ph
 
 def functions_list_triggers(project_id, function_name):
-
+    """
+    List the event triggers for a specific Google Cloud Function or for all functions in a given project.
+    """
     def print_function_triggers(function):
+        """    
+        Helper function to print the details of the event triggers for a given Google Cloud Function.
+        """
         ph.green(f"Function: {function['name'].split('/')[-1]}")
         
         trigger = function.get('eventTrigger', None)
@@ -32,18 +36,19 @@ def functions_list_triggers(project_id, function_name):
         print(f"   - Channel: {trigger.get('channel', 'Null')}")
         print()
 
-    try: 
+    try:
         creds = load_credentials()
         if creds is None:
             # ph.print_error("Failed to load credentials. Exiting.")
-            return        
+            return
+
         service = build('cloudfunctions', 'v2', credentials=creds)
         parent = f'projects/{project_id}/locations/-'
         response = service.projects().locations().functions().list(parent=parent).execute()
         functions = response.get('functions', [])
 
         if not functions:
-            ph.print_info(f"No Cloud Functions found in the project {project_id}!.\n")
+            ph.print_info(f"No Cloud Functions found in the project {project_id}.\n")
         else:
             if function_name:
                 function = next((f for f in functions if f['name'].split('/')[-1] == function_name), None)
@@ -56,6 +61,8 @@ def functions_list_triggers(project_id, function_name):
                 print(f"\n(+) Listing triggers for all Functions in Project {project_id}\n")
                 for function in functions:
                     print_function_triggers(function)
+
+    except HttpError as http_err:
+        ph.print_error(f"HTTP Error occurred: {http_err}")
     except Exception as ex:
-        ph.print_error("{}".format(ex))
-        print()
+        ph.print_error(f"An unexpected error occurred: {ex}")

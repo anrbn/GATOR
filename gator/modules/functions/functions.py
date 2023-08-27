@@ -1,5 +1,3 @@
-# modules/functions/functions.py
-
 import uuid
 import json
 from googleapiclient.discovery import build
@@ -9,6 +7,9 @@ from gator.auth.credentials import load_credentials
 from gator.utils import print_helpers as ph
 
 def functions_list_functions(project_id, verbose, json_output):
+    """
+    List Google Cloud Functions for a given project.
+    """
     try:
         if verbose and json_output:
             ph.print_error("--verbose or -v and --json-output can't be used at the same time.\n")
@@ -18,14 +19,17 @@ def functions_list_functions(project_id, verbose, json_output):
         if creds is None:
             # ph.print_error("Failed to load credentials. Exiting.")
             return
+        
+        try:
+            service = build('cloudfunctions', 'v2', credentials=creds)
+            parent = f'projects/{project_id}/locations/-'
+            request = service.projects().locations().functions().list(parent=parent)
+            response = request.execute()
+        except Exception as e:
+            ph.print_error(f"Failed to list functions: {e}\n")
+            return
 
-        service = build('cloudfunctions', 'v2', credentials=creds)
-        parent = f'projects/{project_id}/locations/-'
-        request = service.projects().locations().functions().list(parent=parent)
-
-        response = request.execute()
         functions = response.get('functions', [])
-
         if not functions:
             ph.print_info("No Cloud Functions found in this Project.\n")
         else:
@@ -106,42 +110,57 @@ def functions_list_functions(project_id, verbose, json_output):
                     print()
     
     except Exception as ex:
-        ph.print_error("{}".format(ex))
+        ph.print_error(f"An unexpected error occurred: {ex}")
         print()
 
 def functions_deploy_functions(region, function_name, project_id, entry_point, runtime, service_account, source):
-    creds = load_credentials()
-    if creds is None:
-        # ph.print_error("Failed to load credentials. Exiting.")
-        return    
-    service = build('cloudfunctions', 'v1', credentials=creds) # Include V2
-
-    region = region if region else 'us-central1'
-
-    function_name = function_name if function_name else 'func' + str(uuid.uuid4())[:6]
-    
-    location = f'projects/{project_id}/locations/{region}'
-    parent = service.projects().locations()
-
-    function_dict = {
-        'name': f'{location}/functions/{function_name}',
-        'entryPoint': entry_point,
-        'runtime': runtime,
-        'httpsTrigger': {},
-        'availableMemoryMb': 256,
-        'sourceArchiveUrl': source,
-    }
-
-    if service_account:
-        function_dict['serviceAccountEmail'] = service_account
-
+    """
+    Deploy a Google Cloud Function.
+    """
     try:
-        function_request = parent.functions().create(location=location, body=function_dict)
-        response = function_request.execute()
-        ph.green(f"[+] Function {function_name} created successfully.")
-        return function_name 
-    except HttpError as error:
-        ph.red(f"[-] Error: {error}")
+        creds = load_credentials()
+        if creds is None:
+            # ph.print_error("Failed to load credentials. Exiting.")
+            return None
+
+        try:
+            service = build('cloudfunctions', 'v1', credentials=creds)
+        except Exception as e:
+            ph.print_error(f"Failed to build the cloudfunctions service: {e}\n")
+            return None
+
+        region = region if region else 'us-central1'
+        function_name = function_name if function_name else 'func' + str(uuid.uuid4())[:6]
+        location = f'projects/{project_id}/locations/{region}'
+        parent = service.projects().locations()
+
+        function_dict = {
+            'name': f'{location}/functions/{function_name}',
+            'entryPoint': entry_point,
+            'runtime': runtime,
+            'httpsTrigger': {},
+            'availableMemoryMb': 256,
+            'sourceArchiveUrl': source,
+        }
+
+        if service_account:
+            function_dict['serviceAccountEmail'] = service_account
+
+        try:
+            function_request = parent.functions().create(location=location, body=function_dict)
+            response = function_request.execute()
+        except HttpError as error:
+            ph.print_error(f"HTTP Error while creating function: {error}\n")
+            return None
+        except Exception as e:
+            ph.print_error(f"Failed to create function: {e}\n")
+            return None
+
+        ph.print_success(f"Function {function_name} created successfully.")
+        return function_name
+
+    except Exception as ex:
+        ph.print_error(f"An unexpected error occurred: {ex}\n")
         return None
 
     

@@ -1,12 +1,14 @@
-# modules/storage/buckets.py
-
 import json
 from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
 
 from gator.auth.credentials import load_credentials
 from gator.utils import print_helpers as ph
 
 def storage_list_buckets(project_id, verbose, json_output):
+    """
+    List Google Cloud Storage buckets for a given project.
+    """
     if verbose and json_output:
         ph.print_error("The flag --verbose / -v and --json-output can't be used at the same time.\n")
         return
@@ -15,13 +17,25 @@ def storage_list_buckets(project_id, verbose, json_output):
         creds = load_credentials()
         if creds is None:
             # ph.print_error("Failed to load credentials. Exiting.")
-            return        
-        service = build('storage', 'v1', credentials=creds)
-        request = service.buckets().list(project=project_id)
+            return
 
-        response = request.execute()
+        try:
+            service = build('storage', 'v1', credentials=creds)
+        except Exception as e:
+            ph.print_error(f"Failed to build the storage service: {e}")
+            return
+
+        try:
+            request = service.buckets().list(project=project_id)
+            response = request.execute()
+        except HttpError as e:
+            ph.print_error(f"HTTP Error occurred while listing buckets: {e}")
+            return
+        except Exception as e:
+            ph.print_error(f"Failed to list buckets: {e}")
+            return
+
         buckets = response.get('items', [])
-
         if not buckets:
             ph.print_info("\nNo buckets found in this Project.\n")
         else:
@@ -94,5 +108,5 @@ def storage_list_buckets(project_id, verbose, json_output):
                     print()
 
     except Exception as ex:
-        ph.print_error("{}".format(ex))
+        ph.print_error(f"An unexpected error occurred: {ex}")
         print()

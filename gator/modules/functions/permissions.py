@@ -1,47 +1,60 @@
-# modules/functions/permissions.py
-
 from googleapiclient.discovery import build
 
 from gator.auth.credentials import load_credentials
 from gator.utils import print_helpers as ph
 
 def functions_list_permissions(project_id):
+    """
+    List the IAM permissions for each Google Cloud Function in a given project.
+    """
     try:
         creds = load_credentials()
         if creds is None:
             # ph.print_error("Failed to load credentials. Exiting.")
-            return        
-        service = build('cloudfunctions', 'v2', credentials=creds)
+            return
 
-        response = service.projects().locations().functions().list(
-            parent=f'projects/{project_id}/locations/-'
-        ).execute()
-        
+        try:
+            service = build('cloudfunctions', 'v2', credentials=creds)
+        except Exception as e:
+            ph.print_error(f"Failed to build the cloudfunctions service: {e}")
+            return
+
+        try:
+            response = service.projects().locations().functions().list(
+                parent=f'projects/{project_id}/locations/-'
+            ).execute()
+        except Exception as e:
+            ph.print_error(f"Failed to list functions: {e}")
+            return
+
         functions = response.get('functions', [])
         if not functions:
             ph.print_info("No Cloud Functions found in this Project.\n")
-        else: 
+        else:
             print(f"\n(+) Checking Permissions for Cloud Functions in project {project_id}\n")
 
             for function in functions:
-
                 function_name = function["name"].split("/")[-1]
                 ph.green(f'Cloud Function: {function_name}')
 
-                permissions_response = service.projects().locations().functions().testIamPermissions(
-                    resource=function['name'],
-                    body={'permissions': [
-                        'cloudfunctions.functions.call',
-                        'cloudfunctions.functions.invoke',
-                        'cloudfunctions.functions.delete',
-                        'cloudfunctions.functions.get',
-                        'cloudfunctions.functions.update',
-                        'cloudfunctions.functions.sourceCodeGet',
-                        'cloudfunctions.functions.sourceCodeSet',
-                        'cloudfunctions.functions.getIamPolicy',
-                        'cloudfunctions.functions.setIamPolicy'
-                    ]}
-                ).execute()
+                try:
+                    permissions_response = service.projects().locations().functions().testIamPermissions(
+                        resource=function['name'],
+                        body={'permissions': [
+                            'cloudfunctions.functions.call',
+                            'cloudfunctions.functions.invoke',
+                            'cloudfunctions.functions.delete',
+                            'cloudfunctions.functions.get',
+                            'cloudfunctions.functions.update',
+                            'cloudfunctions.functions.sourceCodeGet',
+                            'cloudfunctions.functions.sourceCodeSet',
+                            'cloudfunctions.functions.getIamPolicy',
+                            'cloudfunctions.functions.setIamPolicy'
+                        ]}
+                    ).execute()
+                except Exception as e:
+                    ph.print_error(f"Failed to get permissions for function {function_name}: {e}")
+                    continue  # Skip to the next iteration if an error occurs
 
                 print('   - Permissions:')
                 for permission in permissions_response.get('permissions', []):
@@ -64,14 +77,14 @@ def functions_list_permissions(project_id):
                     print('   - Invoker Emails:')
                     for email in invoker_emails:
                         print(f'      - {email}')
-                
+
                 if 'serviceConfig' in function:
                     service_account_email = function['serviceConfig'].get('serviceAccountEmail', 'Not Available, as function is in Deployment State!')
                     print(f'   - Service Account: {service_account_email}')
                 else:
                     print('   - Service Account: Not Available, as function is in Deployment State!')
-                
+
                 print()
+
     except Exception as ex:
-        ph.print_error("{}".format(ex))
-        print()
+        ph.print_error(f"An unexpected error occurred: {ex}")

@@ -1,5 +1,3 @@
-# custom/custom_cli.py
-
 import click
 
 INDENT = "  " 
@@ -58,22 +56,28 @@ class CustomGroup(click.Group):
             formatter.write_text(f"{INDENT}gator {full_command_path} [GROUPS | COMMANDS] [OPTIONS]")
 
     def format_help(self, ctx, formatter):
-        """Writes the complete help text to the formatter."""
-        self.format_usage(ctx, formatter)
-        self.format_help_text(ctx, formatter)
-        self.format_commands(ctx, formatter)
-        self.format_options(ctx, formatter)
+        try:
+            self.format_usage(ctx, formatter)
+            self.format_help_text(ctx, formatter)
+            self.format_commands(ctx, formatter)
+            self.format_options(ctx, formatter)
+        except Exception as e:
+            print(f"An error occurred while formatting help: {e}")
 
     def write_options(self, ctx, formatter, opts):
-        """Writes options into the formatter."""
-        
-        max_width = max(len(', '.join(opt.opts)) for opt in opts)
-        
+        try:
+            max_width = max(len(', '.join(opt.opts)) for opt in opts)
+        except Exception as e:
+            print(f"An error occurred while calculating max width: {e}")
+            return
+
         for opt in opts:
-            opts_str = ', '.join(opt.opts).ljust(max_width)
-            help_str = opt.help or ''
-            
-            formatter.write_dl([(opts_str, help_str)])
+            try:
+                opts_str = ', '.join(opt.opts).ljust(max_width)
+                help_str = opt.help or ''
+                formatter.write_dl([(opts_str, help_str)])
+            except Exception as e:
+                print(f"An error occurred while writing options: {e}")
 
 """
 class CustomHelpFormatter(click.HelpFormatter):
@@ -131,6 +135,9 @@ class CustomCommand(click.Command):
                 formatter.write_text(cleaned_text)
 
     def format_help(self, ctx, formatter):
-        self.format_usage(ctx, formatter)
-        self.format_help_text(ctx, formatter)
-        self.format_options(ctx, formatter)
+        try:
+            self.format_usage(ctx, formatter)
+            self.format_help_text(ctx, formatter)
+            self.format_options(ctx, formatter)
+        except Exception as e:
+            print(f"An error occurred while formatting help: {e}")

@@ -1,5 +1,3 @@
-# cli/functions_cli.py
-
 import click
 
 from gator.custom.custom_cli import CustomGroup, CustomCommand

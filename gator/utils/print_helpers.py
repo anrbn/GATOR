@@ -1,5 +1,3 @@
-# utils/print_helper.py
-
 from termcolor import colored
 
 def red(message):
@@ -30,10 +28,10 @@ def grey(message):
     print(colored(message, 'grey'))
 
 def print_error(message):
-    print(colored('ERROR:', 'red') + f" {message}")
+    print(colored('[ERROR]  ', 'red') + f" {message}")
 
 def print_success(message):
-    print(colored('SUCCESS:', 'green') + f" {message}")
+    print(colored('[SUCCESS]', 'green') + f" {message}")
 
 def print_info(message):
-    print(colored('INFO:', 'yellow') + f" {message}")
+    print(colored('[INFO]   ', 'yellow') + f" {message}")

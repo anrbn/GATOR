@@ -1,5 +1,3 @@
-# cli/storage_cli.py
-
 import click
 
 from gator.custom.custom_cli import CustomGroup, CustomCommand
@@ -28,7 +26,8 @@ def list_buckets(project_id, verbose, json_output):
     """List all storage buckets.
     This command will list all the storage buckets associated with the specified Project ID.
     
-    Example:                                                                gator storage buckets list --project-id abcd-1234
+    Example:\n
+        - gator storage buckets list --project-id abcd-1234
     """
     storage_list_buckets(project_id, verbose, json_output)
 
@@ -41,7 +40,9 @@ def list_permissions(project_id, bucket_name):
     """List permissions for storage buckets.
     This command will list permissions for a specific bucket or all buckets within the specified Project ID, depending on the --bucket-name option.
     
-    Example:                                                                    1. gator storage buckets list_permissions --project-id abcd-1234                                                                2. gator storage buckets list_permissions --project-id abcd-1234 --bucket-name mybucket
+    Examples:\n
+        - gator storage buckets list_permissions --project-id abcd-1234\n
+        - gator storage buckets list_permissions --project-id abcd-1234 --bucket-name mybucket
     """
     storage_list_permissions(project_id, bucket_name)
 

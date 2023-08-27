@@ -1,5 +1,3 @@
-# auth/auth_commands.py
-
 import os
 import json
 import click
@@ -29,10 +27,10 @@ def get_auth_elements():
             try:
                 state = json.load(f)
             except json.JSONDecodeError:
-                ph.print_error("State File is corrupted.")
-                ph.print_info("Fixing the state.json File.")
-                ph.print_info("Fixed!")
-                print()
+                # ph.print_error("State File is corrupted.")
+                # ph.print_info("Fixing the state.json File.")
+                # ph.print_info("Fixed!")
+                # print()
                 state = {}
 
     elements = []
@@ -50,11 +48,12 @@ def auth_list():
 
     This command lists all the authentication methods that have been added.
 
-    Example: gator auth list
+    Example:\n 
+        - gator auth list
     """
     elements, state = get_auth_elements()
     if elements:
-        header = "(+) Service Accounts / Access Tokens:"
+        header = "(+) Service Accounts / Access Tokens"
         separator = "-" * len(header)
         print()
         ph.yellow(f"{separator}\n{header}\n{separator}")
@@ -73,9 +72,9 @@ def auth_list():
 
     else:
         ph.print_error("No Authentication mechanism set.")
-        print("        1. Import a Service Account / Access Token by using 'gator auth add --key-file <path to service_account> / --access-token <access_token>'")
-        print("        2. Find the Index using 'gator auth list'")
-        print("        3. Activate the Service Account / Access Token using 'gator auth activate (INDEX)")
+        print("          1. Import a Service Account / Access Token by using 'gator auth add --key-file <path to service_account> / --access-token <access_token>'")
+        print("          2. Find the Index using 'gator auth list'")
+        print("          3. Activate the Service Account / Access Token using 'gator auth activate (INDEX)'")
         print()
 auth.add_command(auth_list, name="list")
 
@@ -86,7 +85,8 @@ def auth_activate(index):
 
     Activates an authentication method based on its index.
 
-    Example:                                                                gator auth activate (INDEX)
+    Example:\n
+    - gator auth activate (INDEX)
     """
     elements, state = get_auth_elements()
     if index > 0 and index <= len(elements):
@@ -105,7 +105,9 @@ def activate_service_account(key_file, access_token):
 
     Adds either a key file or an access token to the Index.
 
-    Examples:                                                                gator auth add --key-file "path/to/key_file"                                                                gator auth add --access-token "access_token"
+    Examples:\n
+        - gator auth add --key-file "path/to/key_file"\n
+        - gator auth add --access-token "access_token"
     """
     if not key_file and not access_token:
         ph.print_error("Either --key-file or --access-token should be provided.\n")
@@ -121,10 +123,10 @@ def activate_service_account(key_file, access_token):
             try:
                 state = json.load(f)
             except json.JSONDecodeError:
-                ph.print_error("State File is corrupted.")
-                ph.print_info("Fixing the state.json File.")
-                ph.print_info("Fixed!")
-                print()
+                # ph.print_error("State File is corrupted.")
+                # ph.print_info("Fixing the state.json File.")
+                # ph.print_info("Fixed!")
+                # print()
                 state = {}
     
     if key_file:
@@ -158,7 +160,10 @@ def auth_delete(indices):
     Deletes an authentication method based on its index or removes all 
     methods if 'all' is specified.
 
-    Example:                                                                gator auth delete 1                                                                gator auth delete 1,2                                                                gator auth delete all
+    Examples:\n                                                                
+        - gator auth delete 1\n
+        - gator auth delete 1,2\n
+        - gator auth delete all
     """
     
     elements, state = get_auth_elements()

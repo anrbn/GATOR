@@ -5,6 +5,7 @@ from gator.custom.custom_cli import CustomGroup
 from gator.auth import auth_commands
 from gator.cli.storage_cli import storage
 from gator.cli.functions_cli import functions
+from gator.cli.compute_cli import compute
 
 VERSION = pkg_resources.get_distribution("gator-red").version
 
@@ -20,6 +21,7 @@ def main():
 main.add_command(auth_commands.auth)
 main.add_command(storage)
 main.add_command(functions)
+main.add_command(compute)
 
 if __name__ == '__main__':
     main()
