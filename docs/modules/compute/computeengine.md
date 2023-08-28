@@ -25,11 +25,10 @@ This command allows you to add an SSH key to a specific compute instance.
 **Example:**
 
 ```bash
-compute instances add-ssh-key --project-id "your_project_id" --email "your_email" --instance-name "your_instance_name" --zone "your_zone"
+gator compute instances add-ssh-key --project-id "your_project_id" --email "your_email" --instance-name "your_instance_name" --zone "your_zone"
 ```
 
 This command will add an SSH key for the email provided to the specified instance in the given project and zone.
-
 
 ## Usage Scenarios
 
@@ -38,7 +37,7 @@ This command will add an SSH key for the email provided to the specified instanc
 If you want to add an SSH key to an instance named `my-instance` in the project `my-project` located in the zone `zone-a`, you would run:
 
 ```bash
-compute instances add-ssh-key --project-id "my-project" --email "user@example.com" --instance-name "my-instance" --zone "zone-a"
+gator compute instances add-ssh-key --project-id "my-project" --email "user@example.com" --instance-name "my-instance" --zone "zone-a"
 ```
 
 This will generate an SSH key for `user@example.com` and add it to the `my-instance` compute instance in the `my-project` project located in the `zone-a` zone.
