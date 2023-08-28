@@ -89,7 +89,7 @@ Have a look at the GATOR [Gitbook](https://anrbn.gitbook.io/gator/) for document
 
 # Installation
 
-* Python 3.11 or newer should be installed. You can verify your Python version with the following command:
+Python 3.11 or newer should be installed. You can verify your Python version with the following command:
 ```shell
 python --version
 ```
