@@ -40,4 +40,4 @@ If you want to add an SSH key to an instance named `my-instance` in the project 
 gator compute instances add-ssh-key --project-id "my-project" --email "user@example.com" --instance-name "my-instance" --zone "zone-a"
 ```
 
-This will generate an SSH key for `user@example.com` and add it to the `my-instance` compute instance in the `my-project` project located in the `zone-a` zone.
+This will generate an SSH key for `user@example.com` and add it to the `my-instance` compute instance located in the `zone-a` zone in the `my-project` project.
