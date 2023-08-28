@@ -1,10 +1,11 @@
 <div align="center">
 
-![GCP ATTACK TOOLKIT FOR OFFENSIVE RESEARCH](https://drive.google.com/uc?id=1BahpF3-BGMCqUAQCIBczLqW6jFcJAJ_Q)
+<p><img src="https://drive.google.com/uc?id=1BahpF3-BGMCqUAQCIBczLqW6jFcJAJ_Q" width="400"></p>
 
 # GCP ATTACK TOOLKIT FOR OFFENSIVE RESEARCH
 
 </div>
+
 
 ![](https://img.shields.io/badge/Python-3.11-%14354C.svg?style=flat-square&logo=python&logoColor=yellow&color=blue) ![](https://img.shields.io/github/release/anrbn/GATOR?style=flat-square&color=blueviolet) 
 
