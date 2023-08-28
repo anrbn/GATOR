@@ -1,22 +1,19 @@
+# Authentication Command Group
 
-# Overview
+## Overview
 
-The `gator auth` command manages authentication. It has the following commands which add, list, activate, and delete authentication methods such as Service Accounts and Access Tokens. It let's you manage multiple authentication methods and easily switching between them.
+The `auth` command group provides a set of sub-commands that manages authentication. This includes operations related to add, list, activate, and delete authentication methods such as Service Accounts and Access Tokens. It let's you manage multiple authentication methods and easily switching between them.
 
-# Authentication Methods
+## Authentication Methods
 
 **gator** supports two types of authentication methods:
 
 1. **Service Account:** A service account is a special type of Google account that belongs to your application instead of an individual end user. A key file associated with the service account is used for authentication.
 2. **Access Token:** An access token is a string representing the granted permissions. It is used for authentication and authorization in the application.
 
-# Commands
+## Sub-Commands
 
-## gator auth
-
-This is the main command for managing authentication methods and serves as a sub-command group for the following commands:
-
-### gator auth list
+#### list
 
 Lists all the authentication methods that have been added. It shows the type of authentication (Service Account or Access Token), the value (key file path or access token), and indicates which method is currently activated.
 
@@ -26,7 +23,8 @@ Lists all the authentication methods that have been added. It shows the type of 
 gator auth list
 ```
 
-### gator auth activate [INDEX]
+#### activate [INDEX]
+
 Activates a specific authentication method based on its index. The index corresponds to the position of the authentication method in the list displayed by `gator auth list`.
 
 **Example:**
@@ -34,7 +32,7 @@ Activates a specific authentication method based on its index. The index corresp
 gator auth activate 1
 ```
 
-### gator auth add
+#### add
 
 Adds either a key file or an access token to the list of authentication methods.
 
@@ -51,7 +49,7 @@ gator auth add --key-file "path/to/key_file.json"
 gator auth add --access-token "your_access_token_here"
 ```
 
-### gator auth delete [INDICES]
+#### delete [INDICES]
 
 Deletes a specific authentication method based on its index or removes all methods if 'all' is specified. The index corresponds to the position of the authentication method in the list displayed by `gator auth list`.
 
@@ -69,7 +67,7 @@ gator auth delete 1,2`
 gator auth delete all
 ```
 
-# Usage Scenarios
+## Usage Scenarios
 
 ### Adding a New Service Account
 
@@ -109,6 +107,7 @@ To delete a specific authentication method, you need to provide its index from t
 
 ```bash
 gator auth delete 1
+gator auth delete 1, 5, 3
 ```
 
 ### Deleting All Authentication Methods
