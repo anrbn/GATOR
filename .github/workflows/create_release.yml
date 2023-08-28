@@ -20,7 +20,7 @@ jobs:
       uses: actions/create-release@v1
       with:
         tag_name: ${{ steps.get_version.outputs.version }}
-        release_name: Release ${{ steps.get_version.outputs.version }}
+        release_name: v${{ steps.get_version.outputs.version }}
         body: 'New release based on VERSION file'
         draft: false
         prerelease: false
