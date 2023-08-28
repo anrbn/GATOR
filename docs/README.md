@@ -37,13 +37,13 @@ Gator provides a robust authentication management system. You can add, list, act
 ## Modules
 
 ### 1. Compute Engine
-Gator provides a robust authentication management system. You can add, list, activate, and delete authentication methods such as Service Accounts and Access Tokens. For detailed instructions, see [Compute Engine Guide](https://github.com/anrbn/GATOR/blob/main/docs/modules/compute/README.md).
+GATOR offers a comprehensive command set for managing Google Cloud Functions. You can list all cloud functions within a project, view the triggers associated with each function, and even inspect the permissions set on these functions. For detailed instructions, see [Compute Engine Guide](https://github.com/anrbn/GATOR/blob/main/docs/modules/compute/README.md).
 
 ### 2. Cloud Functions
-Gator provides a robust authentication management system. You can add, list, activate, and delete authentication methods such as Service Accounts and Access Tokens. For detailed instructions, see [Cloud Functions Guide](https://github.com/anrbn/GATOR/blob/main/docs/modules/functions/README.md).
+GATOR offers a comprehensive command set for managing Cloud Storage. With Gator, you can list all storage buckets in a project and view their permissions. For detailed instructions, see [Cloud Functions Guide](https://github.com/anrbn/GATOR/blob/main/docs/modules/functions/README.md).
 
 ### 3. Cloud Storage
-Gator provides a robust authentication management system. You can add, list, activate, and delete authentication methods such as Service Accounts and Access Tokens. For detailed instructions, see [Cloud Storage Guide](https://github.com/anrbn/GATOR/blob/main/docs/modules/storage/README.md).
+GATOR brings the power of Google Compute Engine management to your command line. For now it provides a single command to add SSH keys to instances. For detailed instructions, see [Cloud Storage Guide](https://github.com/anrbn/GATOR/blob/main/docs/modules/storage/README.md).
 
 ## Contributing
 
