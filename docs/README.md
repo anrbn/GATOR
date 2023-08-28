@@ -1,4 +1,3 @@
-
 # Documentation
 
 -   [Installation](https://github.com/anrbn/GATOR/tree/main/docs#installation)
