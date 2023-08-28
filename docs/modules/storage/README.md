@@ -23,7 +23,7 @@ This command lists all the storage buckets associated with a specified Project I
 **Example:**
 
 ```bash
-storage buckets list --project-id "your_project_id" --verbose --json-output
+gator storage buckets list --project-id "your_project_id" --verbose --json-output
 ```
 
 #### permissions
@@ -52,12 +52,12 @@ gator storage buckets permissions --project-id "your_project_id"
 To list all storage buckets in a project with ID `my-project`, you would run:
 
 ```bash
-storage buckets list --project-id "my-project"
+gator storage buckets list --project-id "my-project"
 ```
 For verbose output and JSON format, you can use:
 
 ```bash
-storage buckets list --project-id "my-project" --verbose --json-output
+gator storage buckets list --project-id "my-project" --verbose --json-output
 ```
 
 ### Listing Permissions of a Specific Storage Bucket
@@ -65,7 +65,7 @@ storage buckets list --project-id "my-project" --verbose --json-output
 To list all permissions of a storage bucket named `my-bucket` in the project `my-project`, you would run:
 
 ```bash
-storage buckets permissions --project-id "my-project" --bucket-name "my-bucket"
+gator storage buckets permissions --project-id "my-project" --bucket-name "my-bucket"
 ```
 
 ### Listing Permissions of All Storage Buckets
@@ -73,5 +73,5 @@ storage buckets permissions --project-id "my-project" --bucket-name "my-bucket"
 To list all permissions of storage buckets in the project `my-project`, you would run:
 
 ```bash
-storage buckets permissions --project-id "my-project"
+gator storage buckets permissions --project-id "my-project"
 ```
