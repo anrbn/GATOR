@@ -107,7 +107,7 @@ pip install gator-red
 
 # Documentation
 
-Have a look at the GATOR [Documentation](https://github.com/anrbn/GATOR/docs/README.md) for an explained guide on using GATOR and it's module!
+Have a look at the GATOR [Documentation](https://github.com/anrbn/GATOR/tree/main/docs#readme) for an explained guide on using GATOR and it's module!
 
 # Issues
 
