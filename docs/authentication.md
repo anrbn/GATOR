@@ -40,8 +40,8 @@ Adds either a key file or an access token to the list of authentication methods.
 
 **Options:**
 
--   `--key-file`: Path to the key file.
--   `--access-token`: Access token for authentication.
+-   `--key-file` (Required): Path to the key file.
+-   `--access-token` (Required): Access token for authentication.
 
 **Examples:**
 ```bash
