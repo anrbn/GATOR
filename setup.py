@@ -22,5 +22,9 @@ setup(
         'console_scripts': [
             'gator=gator.main:main',
         ],
-    }
+    },
+    package_data={
+        '': ['VERSION'],  # Include VERSION file
+    },
+    include_package_data=True,  # Include package data
 )
