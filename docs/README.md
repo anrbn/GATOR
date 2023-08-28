@@ -2,7 +2,7 @@
 # Documentation
 
 -   [Installation](https://github.com/anrbn/GATOR/tree/main/docs#installation)
--   [Authentication](https://github.com/anrbn/GATOR/tree/main/docs##authentication)
+-   [Authentication](https://github.com/anrbn/GATOR/tree/main/docs#authentication)
 -   [Modules](https://github.com/anrbn/GATOR/tree/main/docs#modules)
     -   [Compute Engine](https://github.com/anrbn/GATOR/tree/main/docs#1-compute-engine)
     -   [Cloud Functions](https://github.com/anrbn/GATOR/tree/main/docs#1-cloud-functions)
