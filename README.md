@@ -136,7 +136,7 @@ I warmly welcome and appreciate contributions from the community! If you're inte
 
 Once you've submitted a PR, I'll review it as soon as I can. I might request some changes or improvements before merging your PR. Your contributions play a crucial role in making the tool better, and I'm excited to see what you'll bring to the project!
 
-Thank you for considering contributing to the project!
+Thank you for considering contributing to the project.
 
 # Questions and Issues
 If you have any questions regarding the tool or any of its modules, please check out the [documentation](https://github.com/anrbn/GATOR/tree/main/docs#readme) first. I've tried to provide clear, comprehensive information related to all of its modules. If however your query is not yet solved or you have a different question altogether please don't hesitate to reach out to me via [Twitter](https://twitter.com/corvuscr0w) or [LinkedIn](https://www.linkedin.com/in/anrbn/). I'm always happy to help and provide support. :)
