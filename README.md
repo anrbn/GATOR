@@ -111,18 +111,16 @@ mkdir /tmp/GATOR
 
 # Installation
 
-## Windows / Unix
+## Installation via `setup.py`
 ```shell
 git clone https://github.com/anrbn/GATOR.git
-cd GATOR/
-pip3 install -r requirements.txt
-python3 gator.py
+cd GATOR
+python setup.py install
 ```
 
-## Docker
+## Installation via `pip`
 ```shell
-sudo docker pull anrbn/gator:latest
-sudo docker run -v /tmp:/tmp -it anrbn/gator:latest
+pip install gator-red
 ```
 
 # Issues
