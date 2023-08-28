@@ -90,24 +90,10 @@ Have a look at the GATOR [Gitbook](https://anrbn.gitbook.io/gator/) for document
 
 # Prerequisites
 
-### Windows / Unix
-
 * Python 3.11 or newer should be installed. You can verify your Python version with the following command:
 ```shell
 python --version
 ```
-### Docker
-
-* Latest version of Docker should be installed.
-* It is recommended to mount only the /tmp directory to the Docker container, and place the Service Account JSON file etc., inside the /tmp directory.
-```shell
-sudo docker run -v /tmp:/tmp -it anrbn/gator:latest
-```
-* To be better organized create a dedicated directory called GATOR inside the /tmp directory.
-```shell
-mkdir /tmp/GATOR
-```
-* If you're running GATOR in Docker, by default the files downloaded by GATOR, will be available in your host's /tmp/GATOR directory.
 
 # Installation
 
