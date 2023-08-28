@@ -1,12 +1,12 @@
 
 # Documentation
 
--   [Installation](https://github.com/anrbn/GATOR/docs/README.md#contributing)
--   [Authentication](https://github.com/anrbn/GATOR/docs/README.md#contributing)
--   [Modules](https://github.com/anrbn/GATOR/docs/README.md#contributing)
-    -   [Compute Engine](https://github.com/anrbn/GATOR/docs/README.md#contributing)
-    -   [Cloud Functions](https://github.com/anrbn/GATOR/docs/README.md#contributing)
-    -   [Cloud Storage](https://github.com/anrbn/GATOR/docs/README.md#contributing)
+-   [Installation](https://github.com/anrbn/GATOR/docs/README.md#installation)
+-   [Authentication](https://github.com/anrbn/GATOR/docs/README.md#authentication)
+-   [Modules](https://github.com/anrbn/GATOR/docs/README.md#modules)
+    -   [Compute Engine](https://github.com/anrbn/GATOR/docs/README.md#1-compute-engine)
+    -   [Cloud Functions](https://github.com/anrbn/GATOR/docs/README.md#1-cloud-functions)
+    -   [Cloud Storage](https://github.com/anrbn/GATOR/docs/README.md#1-cloud-storage)
 -   [Contributing](https://github.com/anrbn/GATOR/docs/README.md#contributing)
 
 ## Installation
@@ -32,18 +32,18 @@ pip install gator-red
 
 ## Authentication
 
-Gator provides a robust authentication management system. You can add, list, activate, and delete authentication methods such as Service Accounts and Access Tokens. For detailed instructions, see [Authentication Guide](https://github.com/anrbn/GATOR/docs/README.md#contributing).
+Gator provides a robust authentication management system. You can add, list, activate, and delete authentication methods such as Service Accounts and Access Tokens. For detailed instructions, see [Authentication Guide](https://github.com/anrbn/GATOR/docs/authentication.md).
 
 ## Modules
 
 ### 1. Compute Engine
-Gator provides a robust authentication management system. You can add, list, activate, and delete authentication methods such as Service Accounts and Access Tokens. For detailed instructions, see [Authentication Guide](https://github.com/anrbn/GATOR/docs/README.md#contributing).
+Gator provides a robust authentication management system. You can add, list, activate, and delete authentication methods such as Service Accounts and Access Tokens. For detailed instructions, see [Compute Engine Guide](https://github.com/anrbn/GATOR/docs/modules/compute/computeengine.md).
 
 ### 2. Cloud Functions
-Gator provides a robust authentication management system. You can add, list, activate, and delete authentication methods such as Service Accounts and Access Tokens. For detailed instructions, see [Authentication Guide](https://github.com/anrbn/GATOR/docs/README.md#contributing).
+Gator provides a robust authentication management system. You can add, list, activate, and delete authentication methods such as Service Accounts and Access Tokens. For detailed instructions, see [Cloud Functions Guide](https://github.com/anrbn/GATOR/docs/modules/compute/cloudfunctions.md).
 
 ### 3. Cloud Storage
-Gator provides a robust authentication management system. You can add, list, activate, and delete authentication methods such as Service Accounts and Access Tokens. For detailed instructions, see [Authentication Guide](https://github.com/anrbn/GATOR/docs/README.md#contributing).
+Gator provides a robust authentication management system. You can add, list, activate, and delete authentication methods such as Service Accounts and Access Tokens. For detailed instructions, see [Cloud Storage Guide](https://github.com/anrbn/GATOR/docs/modules/compute/cloudstorage.md).
 
 ## Contributing
 
