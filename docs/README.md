@@ -32,7 +32,7 @@ pip install gator-red
 
 ## Authentication
 
-Gator provides a robust authentication management system. You can add, list, activate, and delete authentication methods such as Service Accounts and Access Tokens. For detailed instructions, see [Authentication Guide](https://github.com/anrbn/GATOR/docs/README.md).
+Gator provides a robust authentication management system. You can add, list, activate, and delete authentication methods such as Service Accounts and Access Tokens. For detailed instructions, see [Authentication Guide](https://github.com/anrbn/GATOR/docs/authentication.md).
 
 ## Modules
 
