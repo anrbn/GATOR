@@ -17,10 +17,10 @@ This command allows you to add an SSH key to a specific compute instance.
 
 **Options:**
 
--   `--project-id`: The project ID associated with the compute instances. (Required)
--   `--email`: The email address for which the SSH key will be generated. (Required)
--   `--instance-name`: The name of the instance where the SSH key will be added. (Required)
--   `--zone`: The zone in which the instance is located. (Required)
+-   `--project-id` (Required): The project ID associated with the compute instances.
+-   `--email` (Required): The email address for which the SSH key will be generated.
+-   `--instance-name` (Required): The name of the instance where the SSH key will be added.
+-   `--zone` (Required): The zone in which the instance is located.
 
 **Example:**
 
