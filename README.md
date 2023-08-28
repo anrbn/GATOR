@@ -6,7 +6,6 @@
 
 </div>
 
-
 ![](https://img.shields.io/badge/Python-3.11-%14354C.svg?style=flat-square&logo=python&logoColor=yellow&color=blue) ![](https://img.shields.io/github/release/anrbn/GATOR?style=flat-square&color=blueviolet) 
 
 **GATOR** - **GCP Attack Toolkit for Offensive Research**, a tool designed to aid in research and exploiting Google Cloud Environments. It offers a comprehensive range of modules tailored to support users in various attack stages, spanning from Reconnaissance to Impact.  
@@ -88,23 +87,21 @@
 
 Have a look at the GATOR [Gitbook](https://anrbn.gitbook.io/gator/) for documentation and guide on using GATOR and it's module!
 
-# Prerequisites
+# Installation
 
 * Python 3.11 or newer should be installed. You can verify your Python version with the following command:
 ```shell
 python --version
 ```
 
-# Installation
-
-## Installation via `setup.py`
+## Manual Installation via setup.py
 ```shell
 git clone https://github.com/anrbn/GATOR.git
 cd GATOR
 python setup.py install
 ```
 
-## Installation via `pip`
+## Automated Installation via pip
 ```shell
 pip install gator-red
 ```
