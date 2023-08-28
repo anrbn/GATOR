@@ -2,6 +2,8 @@ name: Create Release based on VERSION file
 
 on:
   push:
+    branches:
+      - main
     paths:
       - 'VERSION'
 
