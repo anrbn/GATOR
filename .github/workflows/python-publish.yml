@@ -18,7 +18,6 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: github.event.release.target_commitish == 'main' 
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python
