@@ -20,7 +20,14 @@ This command lists all the Cloud Functions associated with a specified Project I
 **Example:**
 
 ```bash
-gator functions list --project-id "your_project_id" --verbose --json-output
+# To view a simple less-detailed output
+gator functions list --project-id "your_project_id"
+
+# To view a verbose detailed output 
+gator functions list --project-id "your_project_id" --verbose
+
+# To view the Output in JSON Format
+gator functions list --project-id "your_project_id" --json-output
 ```
 
 ### triggers
@@ -35,7 +42,11 @@ This command lists all the triggers associated with a specified cloud function a
 **Example:**
 
 ```bash
+# To list triggers for a specific function
 gator functions triggers --project-id "your_project_id" --function-name "your_function_name"
+
+# To list triggers for all functions in the Project
+gator functions triggers --project-id "your_project_id"
 ```
 
 ### permissions
