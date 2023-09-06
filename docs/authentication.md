@@ -60,7 +60,7 @@ gator auth delete 1
 ```
 
 ```bash
-gator auth delete 1,2`
+gator auth delete 1,2
 ```
 
 ```bash
